@@ -18,6 +18,11 @@ const HomePage = () => {
         New here ? <button type="button" class="btn btn-primary">Sign in</button>
       </a>
         </div>
+        <footer>
+        <a class="nav-link" href="/about">
+        <button type="button" class="btn btn-primary">About Us</button> <br>
+        </a>
+        </footer>
   `;
 
   main.innerHTML = mainfiller;
