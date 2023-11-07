@@ -14,7 +14,6 @@ const Navbar = () => {
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
         <a class="navbar-brand" href="#" data-uri="/">Boonder</a>
-
           <button
             class="navbar-toggler"
             type="button"
