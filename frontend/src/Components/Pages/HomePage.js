@@ -10,9 +10,14 @@ const HomePage = () => {
       <div class="text-center">
         The place to meet new books <br>
         Like  Swipe Match <br>
+
+        <a class="nav-link" href="/login">
         <button type="button" class="btn btn-primary">Login</button> <br>
+        </a>
+        <a class="nav-link" href="/signin">
         New here ? <button type="button" class="btn btn-primary">Sign in</button>
-      </div>
+      </a>
+        </div>
   `;
 
   main.innerHTML = mainfiller;
