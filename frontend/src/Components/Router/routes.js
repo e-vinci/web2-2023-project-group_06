@@ -5,6 +5,7 @@ import NewPage from '../Pages/NewPage';
 import SignInPage from '../Pages/SignInPage';
 import AboutUsPage from '../Pages/AboutUs';
 import ProfilPage from '../Pages/ProfilPage';
+import BookPropositionPage from '../Pages/BookPropositionPage';
 
 const routes = {
   '/': HomePage,
@@ -13,7 +14,8 @@ const routes = {
   '/login': LogInPage,
   '/signin': SignInPage,
   '/about' : AboutUsPage,
-  '/profil': ProfilPage
+  '/profil': ProfilPage,
+  '/proposition' : BookPropositionPage
 };
 
 export default routes;
