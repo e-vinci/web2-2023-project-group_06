@@ -1,0 +1,211 @@
+[
+    {
+        "title" : "100 years of solitude",
+        "nb_pages" : 480,
+        "author" : "Gabriel Garcia Marquez",
+        "description" : "Magic and destiny intertwined in a soulbreaking story",
+        "score_sluttiness" : 7,
+        "score_darkness" : 6,
+        "score_fluffiness" : 4,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Reunion",
+        "nb_pages" : 110,
+        "author" : "Fred Uhlman",
+        "description" : "Friendship and nazis, barely gay",
+        "score_sluttiness" : 5,
+        "score_darkness" : 5,
+        "score_fluffiness" : 4,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Dune",
+        "nb_pages" : 826,
+        "author" : "Frank Herbert",
+        "description" : "Simply. DUNE.",
+        "score_sluttiness" : 5,
+        "score_darkness" : 8,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Country Girls trilogy",
+        "nb_pages" : 704,
+        "author" : "Edna O'Brien",
+        "description" : "What it's like to be a girl in 1950s Ireland, and what it's like to be a woman in general",
+        "score_sluttiness" : 4,
+        "score_darkness" : 6,
+        "score_fluffiness" : 2,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Little Prince",
+        "nb_pages" : 93,
+        "author" : "Antoine de Saint-Exupéry",
+        "description" : "The story of a cute little prince and his fox friend, until it gets worse",
+        "score_sluttiness" : 10,
+        "score_darkness" : 5,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Harry Potter and the Prisoner of Azkaban",
+        "nb_pages" : 448,
+        "author" : "J.K. Rowling",
+        "description" : "I mean, come on, we know you know",
+        "score_sluttiness" : 10,
+        "score_darkness" : 4,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Percy Jackson : The Lightning Thief",
+        "nb_pages" : 370,
+        "author" : "Rick Riordan",
+        "description" : "Greek Gods had kids and of course, they have to save the world somehow",
+        "score_sluttiness" : 8,
+        "score_darkness" : 4,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Do androids dream of electric sheep ?",
+        "nb_pages" : 270,
+        "author" : "Philip K. Dick",
+        "description" : "A.k.a. Blade Runner",
+        "score_sluttiness" : 7,
+        "score_darkness" : 9,
+        "score_fluffiness" : 4,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Fahrenheit 451",
+        "nb_pages" : 272,
+        "author" : "Ray Bradbury",
+        "description" : "Where firemen burn books and spirits thrive for freedom",
+        "score_sluttiness" : 7,
+        "score_darkness" : 6,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "My brilliant friend",
+        "nb_pages" : 336,
+        "author" : "Elena Ferrante",
+        "description" : "A woman's life in 1960s Naples, her fights for freedom, love and happiness",
+        "score_sluttiness" : 5,
+        "score_darkness" : 5,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Norwegian Wood",
+        "nb_pages" : 350,
+        "author" : "Haruki Murakami",
+        "description" : "Sex, drugs and rock'n'roll, but it's melancholic and flirts with death a bit more than I would recommend",
+        "score_sluttiness" : 9,
+        "score_darkness" : 7,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Prince",
+        "nb_pages" : 164,
+        "author" : "Niccolo Machiavelli",
+        "description" : "How to invade neighbouring land and keep power over it for dummies",
+        "score_sluttiness" : 8,
+        "score_darkness" : 5,
+        "score_fluffiness" : 3,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Metamorphosis",
+        "nb_pages" : 70,
+        "author" : "Franz Kafka",
+        "description" : "One day, Gregor wakes up in the body of a giant bug. What could possibly go wrong ? Everything, you're right",
+        "score_sluttiness" : 9,
+        "score_darkness" : 7,
+        "score_fluffiness" : 2,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Picture of Dorian Gray",
+        "nb_pages" : 344,
+        "author" : "Oscar Wilde",
+        "description" : "Handsome young man gets his soul trapped into his portrait. Of course, it goes wrong",
+        "score_sluttiness" : 10,
+        "score_darkness" : 6,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Conversations with friends",
+        "nb_pages" : 320,
+        "author" : "Sally Rooney",
+        "description" : "Probably one of the best books about what it's like to be a woman in our modern society",
+        "score_sluttiness" : 6,
+        "score_darkness" : 5,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Pride and Prejudice",
+        "nb_pages" : 432,
+        "author" : "Jane Austen",
+        "description" : "Your best 18th century drama gossip story",
+        "score_sluttiness" : 9,
+        "score_darkness" : 2,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Bible",
+        "nb_pages" : 1200,
+        "author" : "Unknown",
+        "description" : "Because you need Jesus you reckless slut",
+        "score_sluttiness" : 10,
+        "score_darkness" : 7,
+        "score_fluffiness" : 2,
+        "photo" : ""
+    },
+
+    {
+        "title" : "A Distant Neighborhood",
+        "nb_pages" : 400,
+        "author" : "Jiro Taniguchi",
+        "description" : "When a middle-aged man goes back to his hometown and suddenly wakes up in his 10 year-old body, he feels like he might be able to change his past",
+        "score_sluttiness" : 1,
+        "score_darkness" : 5,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Nana, Vol. 1",
+        "nb_pages" : 196,
+        "author" : "Ai Yazawa",
+        "description" : "2 girls sharing a name and a friendship living their rock'n'roll, drama-fulfilled lives",
+        "score_sluttiness" : 7,
+        "score_darkness" : 6,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    }
+
+]
