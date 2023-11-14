@@ -35,7 +35,9 @@ const Navbar = () => {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" data-uri="/profil">Profil Page</a>
-              </li>                  
+              </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/proposition"> Proposer un livre</a>                  
             </ul>
           </div>
         </div>
