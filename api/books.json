@@ -206,6 +206,204 @@
         "score_darkness" : 6,
         "score_fluffiness" : 5,
         "photo" : ""
+    },
+
+    {
+        "title" : "Brave New World",
+        "nb_pages" : 311,
+        "author" : "Aldoux Huxley",
+        "description" : "Dystopia, love and lab-made babies",
+        "score_sluttiness" : 7,
+        "score_darkness" : 5,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Sun also rises",
+        "nb_pages" : 278,
+        "author" : "Ernest Hemingway",
+        "description" : "Crazy parties in Spain, fucked-up people who try to love each other and fail",
+        "score_sluttiness" : 5,
+        "score_darkness" : 5,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Froth on the Daydream",
+        "nb_pages" : 221,
+        "author" : "Boris Vian",
+        "description" : "The worls is all pretty and they love each other, until it takes the wrong turn",
+        "score_sluttiness" : 9,
+        "score_darkness" : 7,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Fall",
+        "nb_pages" : 147,
+        "author" : "Albert Camus",
+        "description" : "Philosophical sassy monologue about life",
+        "score_sluttiness" : 6,
+        "score_darkness" : 5,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Secret History",
+        "nb_pages" : 659,
+        "author" : "Donna Tart",
+        "description" : "Dark-academia, murder-filled fascinating story",
+        "score_sluttiness" : 10,
+        "score_darkness" : 7,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "1984",
+        "nb_pages" : 328,
+        "author" : "George Orwell",
+        "description" : "THE dystopia",
+        "score_sluttiness" : 9,
+        "score_darkness" : 8,
+        "score_fluffiness" : 1,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Hunger Games",
+        "nb_pages" : 374,
+        "author" : "Suzanne Collins",
+        "description" : "Fighting for your life, fighting for your love and fighting for freedom. It's great",
+        "score_sluttiness" : 8,
+        "score_darkness" : 5,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Seagull",
+        "nb_pages" : 96,
+        "author" : "Anton Chekhov",
+        "description" : "A play about the soul-wrenching pain of living in a plain, desperate world",
+        "score_sluttiness" : 3,
+        "score_darkness" : 7,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Don Juan on trial",
+        "nb_pages" : 112,
+        "author" : "Eric-Emmanuel Schmitt",
+        "description" : "A queer Don Juan and (of course) a lot of drama",
+        "score_sluttiness" : 2,
+        "score_darkness" : 5,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Heavier than heaven : a biography of Kurt Cobain",
+        "nb_pages" : 448,
+        "author" : "Charles R. Cross",
+        "description" : "The biography of the best person ever",
+        "score_sluttiness" : 3,
+        "score_darkness" : 8,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Big Sleep",
+        "nb_pages" : 240,
+        "author" : "Raymond Chandler",
+        "description" : "One of Philip Marlowe's cases, and as always, it is full of femme fatales, whiskey and cigarettes",
+        "score_sluttiness" : 6,
+        "score_darkness" : 7,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Dubliners",
+        "nb_pages" : 182,
+        "author" : "James Joyce",
+        "description" : "Come take a walk along the Liffey with Dublin's vibrant inhabitants",
+        "score_sluttiness" : 6,
+        "score_darkness" : 6,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Sailor who fell from grace with the sea",
+        "nb_pages" : 192,
+        "author" : "Yukio Mishima",
+        "description" : "Psychopathic tendencies and daddy issues meet in the person of a reckless young boy",
+        "score_sluttiness" : 4,
+        "score_darkness" : 7,
+        "score_fluffiness" : 3,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Ice People",
+        "nb_pages" : 282,
+        "author" : "René Barjavel",
+        "description" : "Love and magic in Antarctica",
+        "score_sluttiness" : 3,
+        "score_darkness" : 5,
+        "score_fluffiness" : 9,
+        "photo" : ""
+    },
+
+    {
+        "title" : "No Exit",
+        "nb_pages" : 66,
+        "author" : "Jean-Paul Sartre",
+        "description" : "L'enfer c'est les autres (yes, hell is other people, you're right Jean-Paul)",
+        "score_sluttiness" : 5,
+        "score_darkness" : 4,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Girl with the dragon tattoo",
+        "nb_pages" : 544,
+        "author" : "Stieg Larsson",
+        "description" : "Breathtaking thriller, wrecked characters, Sweden, what else do you want ?",
+        "score_sluttiness" : 7,
+        "score_darkness" : 7,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Crimes and punishments",
+        "nb_pages" : 496,
+        "author" : "Fyodor Dostoievski",
+        "description" : "Is murder okay if your neighbour is a bitch ? Asking for a friend",
+        "score_sluttiness" : 6,
+        "score_darkness" : 8,
+        "score_fluffiness" : 1,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Great Gatsby",
+        "nb_pages" : 208,
+        "author" : "F. Scott Fitzgerald",
+        "description" : "Rich guy throws crazy parties for his crush, but she is a heartless witch (I love her)",
+        "score_sluttiness" : 9,
+        "score_darkness" : 5,
+        "score_fluffiness" : 8,
+        "photo" : ""
     }
 
 ]
