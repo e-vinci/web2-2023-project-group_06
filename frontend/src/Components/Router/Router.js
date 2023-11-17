@@ -5,6 +5,8 @@ const Router = () => {
   onFrontendLoad();
   onNavBarClick();
   onHistoryChange();
+  // onButtonClick();
+  // onPasswordClick();
 };
 
 function onNavBarClick() {
@@ -41,5 +43,25 @@ function onFrontendLoad() {
     componentToRender();
   });
 }
+
+/*
+function onButtonClick() {
+  document.getElementById('loginButton').addEventListener('click', (event) => {
+    event.preventDefault();
+  })
+}
+*/
+/* devrait rendre le pwd visible
+function onPasswordClick() {
+  document.getElementById('togglePassword').addEventListener('click', () => {
+    const passwordInput = document.getElementById('password');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
+}
+*/
 
 export default Router;

@@ -1,10 +1,10 @@
-const LogInPage = () => {
+const SignInPage = () => {
     const main = document.querySelector('main');
     const mainfiller = `
-    <header class="text-center"><div id="navbarWrapper"></div>
+    <header class="text-center"><div id="navbarWrapper"></div>    
         <h1>Welcome to Boonder</h1>
     </header>
-
+    
     <div class="container login-container">
         <form>
             <div class="col-lg-4 mx-auto">
@@ -14,18 +14,24 @@ const LogInPage = () => {
             </div>
             <div class="col-lg-4 mx-auto">
                 <div class="form-group">
-                    <input type="password" class="form-control mb-2" id="password" placeholder="Password">    
+                    <input type="password" class="form-control mb-2" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="col-lg-4 mx-auto">    
+                <div class="form-group">
+                    <input type="password" class="form-control mb-2" id="password" placeholder="Password Confirmation">
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <p>Not a member ? <a href="/signup">Sign up</a>
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
             </div>
         </form>
     </div>
-`;
 
+    <script src="Router.js"></script>
+`;
+    
     main.innerHTML = mainfiller;
 };
 
-export default LogInPage;
+export default SignInPage;

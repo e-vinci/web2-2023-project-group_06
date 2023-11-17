@@ -2,7 +2,7 @@ import GamePage from '../Pages/GamePage';
 import HomePage from '../Pages/HomePage';
 import LogInPage from '../Pages/LogInPage';
 import NewPage from '../Pages/NewPage';
-import SignInPage from '../Pages/SignInPage';
+import SignUpPage from '../Pages/SignUpPage';
 import AboutUsPage from '../Pages/AboutUs';
 import ProfilPage from '../Pages/ProfilPage';
 
@@ -11,7 +11,7 @@ const routes = {
   '/game': GamePage,
   '/new': NewPage,
   '/login': LogInPage,
-  '/signin': SignInPage,
+  '/signup': SignUpPage,
   '/about' : AboutUsPage,
   '/profil': ProfilPage
 };
