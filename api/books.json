@@ -404,6 +404,270 @@
         "score_darkness" : 5,
         "score_fluffiness" : 8,
         "photo" : ""
+    },
+
+    {
+        "title" : "Wunderkind",
+        "nb_pages" : 306,
+        "author" : "Nikolai Grozni",
+        "description" : "Classical music students lead a rock'n'roll life in communist Bulgaria",
+        "score_sluttiness" : 3,
+        "score_darkness" : 5,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Little Women",
+        "nb_pages" : 362,
+        "author" : "Louisa May Alcott",
+        "description" : "Four sisters navigate their early life as the war begins in the US",
+        "score_sluttiness" : 9,
+        "score_darkness" : 4,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Circe",
+        "nb_pages" : 416,
+        "author" : "Madeline Miller",
+        "description" : "A fascinating retelling of some infamous Greek myths, with an amazing female protagonist",
+        "score_sluttiness" : 7,
+        "score_darkness" : 7,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Flowers of Evil",
+        "nb_pages" : 228,
+        "author" : "Charles Baudelaire",
+        "description" : "French dude being unhinged about life and stuff for hundreds of poems straight. A must-read",
+        "score_sluttiness" : 8,
+        "score_darkness" : 9,
+        "score_fluffiness" : 3,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Tender is the night",
+        "nb_pages" : 320,
+        "author" : "F. Scott Fitzgerald",
+        "description" : "Dramatic love stories on the French Riviera, mentally-ill characters involved",
+        "score_sluttiness" : 6,
+        "score_darkness" : 7,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The perks of being a wallflower",
+        "nb_pages" : 224,
+        "author" : "Stephen Chbosky",
+        "description" : "A touching and relatable coming-of age story, set in high school of course",
+        "score_sluttiness" : 7,
+        "score_darkness" : 4,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "I am Pilgrim",
+        "nb_pages" : 624,
+        "author" : "Terry Hayes",
+        "description" : "Page-turning thriller that will make you want to be either a spy or a writer",
+        "score_sluttiness" : 4,
+        "score_darkness" : 6,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The song of Achilles",
+        "nb_pages" : 416,
+        "author" : "Madeline Miller",
+        "description" : "The story of the Trojan war, told by Patroclus. Oh, and it's gay af",
+        "score_sluttiness" : 9,
+        "score_darkness" : 4,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Novel with cocaine",
+        "nb_pages" : 204,
+        "author" : "M. Agueev",
+        "description" : "I mean, it's in the title, but yeah, this dude does drugs. And thinks about life a lot, too",
+        "score_sluttiness" : 2,
+        "score_darkness" : 7,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Goodnight Punpun, Vol. 1",
+        "nb_pages" : 396,
+        "author" : "Inio Asano",
+        "description" : "The life story of a pretty fucked-up boy. Your soul will be torn apart by the end of the series",
+        "score_sluttiness" : 6,
+        "score_darkness" : 9,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Childhood's end",
+        "nb_pages" : 214,
+        "author" : "Arthur C. Clarke",
+        "description" : "Depressive sci-fi with a touch of apocalypse",
+        "score_sluttiness" : 6,
+        "score_darkness" : 7,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Gone Girl",
+        "nb_pages" : 432,
+        "author" : "Gillian Flynn",
+        "description" : "She's a ten, but she's crazy. Girl boss though",
+        "score_sluttiness" : 6,
+        "score_darkness" : 8,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Fight Club",
+        "nb_pages" : 224,
+        "author" : "Chuck Palahniuk",
+        "description" : "When you're new BFF turns out to be a mentally unstable, anti-capitalist, violent arsonist, so you become him",
+        "score_sluttiness" : 5,
+        "score_darkness" : 8,
+        "score_fluffiness" : 2,
+        "photo" : ""
+    },
+
+    {
+        "title" : "We were liars",
+        "nb_pages" : 256,
+        "author" : "E. Lockhart",
+        "description" : "Privileged adventure-seeking teens fucked up, but how exactly ?",
+        "score_sluttiness" : 7,
+        "score_darkness" : 4,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Kafka on the shore",
+        "nb_pages" : 480,
+        "author" : "Haruki Murakami",
+        "description" : "A lost young man goes away, looking for a meaning to his life, and answers to his questions",
+        "score_sluttiness" : 6,
+        "score_darkness" : 6,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Jonathan Strange and Mr. Norrell",
+        "nb_pages" : 864,
+        "author" : "Susanna Clarke",
+        "description" : "Two dark academia gentlemen wizards (who should probably hook up) deal with fairies and stuff",
+        "score_sluttiness" : 5,
+        "score_darkness" : 5,
+        "score_fluffiness" : 6,
+        "photo" : ""
+    },
+
+    {
+        "title" : "A game of thrones",
+        "nb_pages" : 694,
+        "author" : "George R. R. Martin",
+        "description" : "Fantasy, political intrigues and unhinged sex, what more could you want ?",
+        "score_sluttiness" : 5,
+        "score_darkness" : 7,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Never let me go",
+        "nb_pages" : 288,
+        "author" : "Kazuo Ishiguro",
+        "description" : "What is it like to be human ?",
+        "score_sluttiness" : 6,
+        "score_darkness" : 6,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Holes",
+        "nb_pages" : 288,
+        "author" : "Louis Sachar",
+        "description" : "The adventures of incarcerated boys who have to dig holes. Like, a lot of them",
+        "score_sluttiness" : 4,
+        "score_darkness" : 4,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Coraline",
+        "nb_pages" : 176,
+        "author" : "Neil Gaiman",
+        "description" : "The mysteries surrounding a little girl's house slowly reveal themselves in this spooky story",
+        "score_sluttiness" : 6,
+        "score_darkness" : 6,
+        "score_fluffiness" : 5,
+        "photo" : ""
+    },
+
+    {
+        "title" : "The Catcher in the Rye",
+        "nb_pages" : 240,
+        "author" : "J. D. Salinger",
+        "description" : "The unhinged wandering of a funny but depressed boy in New York",
+        "score_sluttiness" : 8,
+        "score_darkness" : 7,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Hollywood",
+        "nb_pages" : 248,
+        "author" : "Charles Bukowski",
+        "description" : "The following of a funny laid-back screenwriter on his journey through the making of a movie",
+        "score_sluttiness" : 4,
+        "score_darkness" : 6,
+        "score_fluffiness" : 7,
+        "photo" : ""
+    },
+
+    {
+        "title" :"The light we carry",
+        "nb_pages" : 336,
+        "author" : "Michelle Obama",
+        "description" : "The Bible didn't work ? There, take this",
+        "score_sluttiness" : 7,
+        "score_darkness" : 3,
+        "score_fluffiness" : 8,
+        "photo" : ""
+    },
+
+    {
+        "title" : "Vicious",
+        "nb_pages" : 400,
+        "author" : "V.E. Schwab",
+        "description" : "Friends to enemies and super powers",
+        "score_sluttiness" : 6,
+        "score_darkness" : 5,
+        "score_fluffiness" : 6,
+        "photo" : ""
     }
 
 ]
