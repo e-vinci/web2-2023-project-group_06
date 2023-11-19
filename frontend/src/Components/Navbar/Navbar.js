@@ -37,7 +37,11 @@ const Navbar = () => {
                 <a class="nav-link" href="#" data-uri="/profil">Profil Page</a>
               </li>
               <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/proposition"> Proposer un livre</a>                  
+                <a class="nav-link" href="#" data-uri="/proposition"> Proposer un livre</a>
+              </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/listpropositions"> Liste des propositions de livre</a>
+              </li>
             </ul>
           </div>
         </div>
