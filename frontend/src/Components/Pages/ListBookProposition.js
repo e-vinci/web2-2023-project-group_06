@@ -1,13 +1,13 @@
 const ListBookProposition = () => {
     const main = document.querySelector('main');
     const mainfiller = `
-    <h1> Liste des livres proposés par la communauté </h1>
+    <h1> List of the books suggested by the community </h1>
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Titre du Livre</th>
-                <th>Auteur</th>
+                <th>Book title</th>
+                <th>Author</th>
                 <th>Action</th>
             </tr>
         </thead>

@@ -42,6 +42,9 @@ const Navbar = () => {
               <li class ="nav-item">
                 <a class="nav-link" href="#" data-uri="/listpropositions"> Liste des propositions de livre</a>
               </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/books"> Liste des livres crée par défaut (BETA)</a>
+              </li>
             </ul>
           </div>
         </div>
