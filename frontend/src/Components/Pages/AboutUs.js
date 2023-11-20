@@ -2,13 +2,13 @@ const AboutUsPage = () => {
     const main = document.querySelector('main');
     const mainfiller = `
     <header>
-        <h1>Bienvenue sur Notre Site</h1>
-        <p>Trouvez le livre parfait à votre goût !</p>
+        <h1>Welcome to Boonder</h1>
+        <p>Find the perfect book match for you !</p>
     </header>
 
     <section id="about">
-        <h2>À Propos de Nous</h2>
-        <p>Notre équipe est passionnée par la lecture et est déterminée à vous aider à trouver le livre qui correspond à vos préférences. Que vous recherchiez un roman, un thriller, de la science-fiction, de la fantasy, ou tout autre genre, nous sommes là pour vous guider.</p>
+        <h2>About us</h2>
+        <p>Our team is made of a bunch of young people, some of them bookworms, some of them obsessed with dating apps, some of them both. Either way, we'll help you find the book that is meant for you.</p>
     </section>
 
     `;

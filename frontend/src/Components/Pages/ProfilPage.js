@@ -24,7 +24,7 @@ const ProfilPage = () => {
                             </div>
                         </div>
                         <ul class="nav nav-tabs">
-                            <li class="nav-item"><a href="" class="active nav-link">Paramètres</a></li>
+                            <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
                         </ul>
                         <div class="tab-content pt-3">
                             <div class="tab-pane active">
@@ -34,13 +34,13 @@ const ProfilPage = () => {
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label>Nom complet</label>
+                                                        <label>Full name</label>
                                                         <input class="form-control" type="text" name="name" placeholder="John Doe" value="John Doe">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label>Nom d'utilisateur</label>
+                                                        <label>Username</label>
                                                         <input class="form-control" type="text" name="username" placeholder="johndoe" value="johndoe">
                                                     </div>
                                                 </div>
@@ -48,8 +48,8 @@ const ProfilPage = () => {
                                             <div class="row">
                                                 <div class="col mb-3">
                                                     <div class="form-group">
-                                                        <label>À propos</label>
-                                                        <textarea class="form-control" rows="5" placeholder="Ma bio..."></textarea>
+                                                        <label>About</label>
+                                                        <textarea class="form-control" rows="5" placeholder="My bio..."></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,7 +57,7 @@ const ProfilPage = () => {
                                     </div>
                                     <div class="row">
                                         <div class="col d-flex justify-content-end">
-                                            <button class="btn btn-primary" type="submit">Enregistrer les modifications</button>
+                                            <button class="btn btn-primary" type="submit">Save modifications</button>
                                         </div>
                                     </div>
                                 </form>
