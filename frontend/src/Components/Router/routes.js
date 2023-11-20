@@ -8,6 +8,7 @@ import ProfilPage from '../Pages/ProfilPage';
 import BookPropositionPage from '../Pages/BookPropositionPage';
 import ListBookProposition from '../Pages/ListBookProposition';
 import BookPage from '../Pages/BookPage';
+import MatchList from '../Pages/MatchList';
 
 const routes = {
   '/': HomePage,
@@ -19,7 +20,8 @@ const routes = {
   '/profil': ProfilPage,
   '/proposition' : BookPropositionPage,
   '/listpropositions' : ListBookProposition,
-  '/book' : BookPage
+  '/book' : BookPage,
+  '/matchList' : MatchList
 
 };
 
