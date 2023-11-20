@@ -42,6 +42,9 @@ const Navbar = () => {
               <li class ="nav-item">
                 <a class="nav-link" href="#" data-uri="/listpropositions"> Liste des propositions de livre</a>
               </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/matchList"> Match List</a>
+              </li>
             </ul>
           </div>
         </div>
