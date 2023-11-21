@@ -10,6 +10,7 @@ import ListBookProposition from '../Pages/ListBookProposition';
 import BookPage from '../Pages/BookPage';
 import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
 import MatchList from '../Pages/MatchList';
+import Quizz from '../Pages/Quizz';
 
 const routes = {
   '/': HomePage,
@@ -23,7 +24,8 @@ const routes = {
   '/listpropositions' : ListBookProposition,
   '/book' : BookPage,
   '/matchList' : MatchList,
-  '/books' : BookPageLinkWithApiBETA
+  '/books' : BookPageLinkWithApiBETA,
+  '/quizz' : Quizz
 
 };
 
