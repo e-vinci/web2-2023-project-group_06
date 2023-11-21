@@ -5,7 +5,6 @@ const Router = () => {
   onFrontendLoad();
   onNavBarClick();
   onHistoryChange();
-  onImageSwipe();
   // onButtonClick();
   // onPasswordClick();
 };
@@ -32,32 +31,6 @@ function onHistoryChange() {
     const uri = removePathPrefix(window.location.pathname);
     const componentToRender = routes[uri];
     componentToRender();
-  });
-}
-
-function onImageSwipe() {
-  // eslint-disable-next-line no-unused-vars
-  let clickStart = 0;
-  let clickEnd = 0;
-  const swipable = document.getElementById("swipable");
-
-
-  function checkDirection(){
-    if(clickEnd > 0 )
-      document.getElementsByClassName("swipe")[0].click();
-
-    if(clickEnd > 0 )
-    document.getElementsByClassName("swipe")[1].click();
-  }
-
-  
-  swipable.addEventListener("mousedown", (e) => {
-    clickStart = e.changedTouches[0].screen;
-  });
-
-  swipable.addEventListener("mouseup", (e) => {
-    clickEnd = e.changedTouches[0].screen;
-    checkDirection();
   });
 }
 
