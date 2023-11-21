@@ -11,6 +11,7 @@ import BookPage from '../Pages/BookPage';
 import MatchList from '../Pages/MatchList';
 import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
 import Swipe from '../Pages/Swipe';
+import Quizz from '../Pages/Quizz';
 
 const routes = {
   '/': HomePage,
@@ -25,7 +26,9 @@ const routes = {
   '/book' : BookPage,
   '/matchList' : MatchList,
   '/books' : BookPageLinkWithApiBETA,
-  '/swipe' : Swipe
+  '/swipe' : Swipe,
+  '/quizz' : Quizz
+
 
 };
 
