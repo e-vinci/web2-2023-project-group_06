@@ -25,7 +25,6 @@ const routes = {
   '/matchList' : MatchList,
   '/books' : BookPageLinkWithApiBETA
 
-
 };
 
 export default routes;
