@@ -8,7 +8,6 @@ import ProfilPage from '../Pages/ProfilPage';
 import BookPropositionPage from '../Pages/BookPropositionPage';
 import ListBookProposition from '../Pages/ListBookProposition';
 import BookPage from '../Pages/BookPage';
-import MatchList from '../Pages/MatchList';
 
 const routes = {
   '/': HomePage,
@@ -22,6 +21,9 @@ const routes = {
   '/listpropositions' : ListBookProposition,
   '/book' : BookPage,
   '/matchList' : MatchList
+  '/book' : BookPage,
+  '/books' : BookPageLinkWithApiBETA
+
 
 };
 
