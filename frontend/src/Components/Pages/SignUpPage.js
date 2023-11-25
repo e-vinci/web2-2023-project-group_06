@@ -23,7 +23,7 @@ const SignInPage = () => {
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block btn-light myButton">Sign Up</button>
             </div>
         </form>
     </div>

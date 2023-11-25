@@ -1,5 +1,7 @@
 import logoImage from '../../img/Boonder_logo.png';
 
+
+
 const HomePage = () => {
   const main = document.querySelector('main');
   
@@ -16,23 +18,24 @@ const HomePage = () => {
     <img src="${logoImage}" alt="logo" class="image-fluid w-25" > 
     <br><br><br>
 
-
-      <a class="btn btn-dark mb-1" href="/login">Login</a>
-
-    <br>
+    <div class="mb-3">
+      <button type="button" class="btn btn-light myButton">
+        <a class="nav-link" href="#" data-uri="/login">Login</a>
+      </button>
+    </div>
 
     <div class="mb-3">
       New here ? 
-      <button type="button" class="btn btn-dark ">
-        <a class="nav-link" href="/signup">Sign up</a>
+      <button type="button" class="btn btn-light myButton">
+        <a class="nav-link" href="#" data-uri="/signup">Sign up</a>
       </button>
     </div>
 
 
     <footer class= "bottom">
       <div class="mb-2">
-        <button type="button" class="btn btn-dark">
-          <a class="nav-link" href="/about">About Us</a>
+        <button type="button" class="btn btn-light myButton">
+          <a class="nav-link" href="#" data-uri="/about">About Us</a>
         </button><br>
         
         <p>Made by beautiful people</p>

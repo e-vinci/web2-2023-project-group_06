@@ -5,9 +5,26 @@ const Router = () => {
   onFrontendLoad();
   onNavBarClick();
   onHistoryChange();
-  // onButtonClick();
+  onButtonClick();
   // onPasswordClick();
 };
+
+
+function onButtonClick() {
+  const logButton = document.querySelector('main');
+
+  logButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    const navBarItemClicked = event.target;
+    const uri = navBarItemClicked?.dataset?.uri;
+    if (uri) {
+      const componentToRender = routes[uri];
+      if (!componentToRender) throw Error(`The ${uri} ressource does not exist.`);
+      componentToRender();
+      window.history.pushState({}, '', usePathPrefix(uri));
+    }
+  })
+}
 
 function onNavBarClick() {
   const navbarWrapper = document.querySelector('#navbarWrapper');
@@ -44,13 +61,8 @@ function onFrontendLoad() {
   });
 }
 
-/*
-function onButtonClick() {
-  document.getElementById('loginButton').addEventListener('click', (event) => {
-    event.preventDefault();
-  })
-}
-*/
+
+
 /* devrait rendre le pwd visible
 function onPasswordClick() {
   document.getElementById('togglePassword').addEventListener('click', () => {

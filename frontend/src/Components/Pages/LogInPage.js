@@ -18,8 +18,8 @@ const LogInPage = () => {
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <p>Not a member ? <a href="/signup">Sign up</a>
+                <button type="submit" class="btn btn-primary btn-block btn-light myButton">Login</button>
+                <p>Not a member ? <a href="#" data-uri="/signup">Sign up</a>
             </div>
         </form>
     </div>
