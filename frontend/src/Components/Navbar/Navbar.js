@@ -48,6 +48,12 @@ const Navbar = () => {
               <li class ="nav-item">
                 <a class="nav-link" href="#" data-uri="/books"> Liste des livres crée par défaut (BETA)</a>
               </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/quizz"> Quizz (temporaire)</a>
+              </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/swipe"> swipe (Alpha testing in progress)</a>
+              </li>
             </ul>
           </div>
         </div>

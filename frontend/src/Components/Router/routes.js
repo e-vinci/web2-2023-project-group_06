@@ -9,7 +9,10 @@ import BookPropositionPage from '../Pages/BookPropositionPage';
 import ListBookProposition from '../Pages/ListBookProposition';
 import BookPage from '../Pages/BookPage';
 import MatchList from '../Pages/MatchList';
-import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA'
+import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
+import Swipe from '../Pages/Swipe';
+import Quizz from '../Pages/Quizz';
+
 
 const routes = {
   '/': HomePage,
@@ -23,7 +26,10 @@ const routes = {
   '/listpropositions' : ListBookProposition,
   '/book' : BookPage,
   '/matchList' : MatchList,
-  '/books' : BookPageLinkWithApiBETA
+  '/books' : BookPageLinkWithApiBETA,
+  '/swipe' : Swipe,
+  '/quizz' : Quizz
+
 
 };
 
