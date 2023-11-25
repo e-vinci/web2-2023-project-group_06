@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const ListBooks = () => {
     const main = document.querySelector('main');
 
