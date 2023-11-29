@@ -4,10 +4,13 @@ const readAllBooks = require('../models/books');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  const allBooks = readAllBooks(req?.query?.order);
-
-  return res.json(allBooks);
+router.get('/', async (req, res) => {
+  try {
+    const allBooks = await readAllBooks();
+    return res.json(allBooks);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
 });
 
 module.exports = router;
