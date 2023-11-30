@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+
 const { Pool } = require('pg');
 
+// to secure the password
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
 
 const pool = new Pool({
