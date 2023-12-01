@@ -10,10 +10,10 @@ const pool = new Pool({
   port: '5432',
 });
 
-const readAllbooks = () => new Promise((resolve, reject) => {
+const loginUser = () => new Promise((resolve, reject) => {
   pool.connect();
 
-  pool.query('SELECT * FROM project.books', (err, res) => {
+  pool.query('SELECT login, password FROM project.users', (err, res) => {
     if (err) {
       console.log(err.message);
       reject(err);
@@ -24,4 +24,4 @@ const readAllbooks = () => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = readAllbooks;
+module.exports = loginUser;
