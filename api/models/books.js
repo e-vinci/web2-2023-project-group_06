@@ -1,17 +1,20 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
+
 const { Pool } = require('pg');
 
+// to secure the password
+const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
+
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: '8861576',
+  user: 'brhhbrnw',
+  host: 'flora.db.elephantsql.com',
+  database: 'brhhbrnw',
+  password: pw,
   port: '5432',
 });
 
 const readAllbooks = () => new Promise((resolve, reject) => {
-  pool.connect();
-
   pool.query('SELECT * FROM project.books', (err, res) => {
     if (err) {
       console.log(err.message);

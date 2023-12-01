@@ -2,11 +2,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { Pool } = require('pg');
 
+const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
+
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: '',
+  user: 'brhhbrnw',
+  host: 'flora.db.elephantsql.com',
+  database: 'brhhbrnw',
+  password: pw,
   port: '5432',
 });
 
