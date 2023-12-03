@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { Pool } = require('pg');
@@ -15,7 +16,7 @@ const pool = new Pool({
 const loginUser = () => new Promise((resolve, reject) => {
   pool.connect();
 
-  pool.query('SELECT login, password FROM project.users', (err, res) => {
+  pool.query('SELECT * FROM project.users WHERE email = ?', (err, res) => {
     if (err) {
       console.log(err.message);
       reject(err);
@@ -27,3 +28,6 @@ const loginUser = () => new Promise((resolve, reject) => {
 });
 
 module.exports = loginUser;
+
+/* INSERT INTO project.users(name, surname, profile_description, password, login, category, quizz_score, is_admin, profile_picture)
+VALUES ('Ambrozewski', 'Kornel', 'jaime le commiunisme', 'kornel123', 'kornel@gmail.com', 'dark', 8, true, ''); */

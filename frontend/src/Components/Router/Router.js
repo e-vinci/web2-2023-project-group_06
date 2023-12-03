@@ -12,6 +12,11 @@ const Router = () => {
 
 function onButtonClick() {
   const logButton = document.querySelector('main');
+  const tamere = document.querySelector('main');
+  tamere.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+  });
 
   logButton.addEventListener('click', (event) => {
     event.preventDefault();
