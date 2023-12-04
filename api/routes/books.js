@@ -22,4 +22,13 @@ router.get('/add', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const book = await bookActions.readOneBook(req.params.id);
+    res.json(book);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 module.exports = router;

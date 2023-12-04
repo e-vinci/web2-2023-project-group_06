@@ -35,4 +35,15 @@ const addOneBooks = async () => {
   }
 };
 
-module.exports = { readAllbooks, addOneBooks };
+const readOneBook = async (id) => {
+  try {
+    const res = await pool.query('SELECT * FROM project.books WHERE id_book = $1', [id]);
+    console.log('get single book');
+    return res.rows;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+module.exports = { readAllbooks, addOneBooks, readOneBook };
