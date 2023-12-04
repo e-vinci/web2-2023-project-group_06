@@ -11,17 +11,11 @@ const Router = () => {
 
 
 function onButtonClick() {
-  const logButton = document.querySelector('main');
-
-  logButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    const navBarItemClicked = event.target;
-    const uri = navBarItemClicked?.dataset?.uri;
-    if (uri) {
-      const componentToRender = routes[uri];
-      if (!componentToRender) throw Error(`The ${uri} ressource does not exist.`);
-      componentToRender();
-      window.history.pushState({}, '', usePathPrefix(uri));
+  document.body.addEventListener('click', (event) => {
+    if (event.target.tagName === 'myButton' && event.target.dataset.uri) {
+      event.preventDefault();
+      const {uri} = event.target.dataset;
+      navigateTo(uri);
     }
   })
 }
@@ -34,11 +28,7 @@ function onNavBarClick() {
     const navBarItemClicked = e.target;
     const uri = navBarItemClicked?.dataset?.uri;
     if (uri) {
-      const componentToRender = routes[uri];
-      if (!componentToRender) throw Error(`The ${uri} ressource does not exist.`);
-
-      componentToRender();
-      window.history.pushState({}, '', usePathPrefix(uri));
+      navigateTo(uri);
     }
   });
 }
@@ -46,22 +36,24 @@ function onNavBarClick() {
 function onHistoryChange() {
   window.addEventListener('popstate', () => {
     const uri = removePathPrefix(window.location.pathname);
-    const componentToRender = routes[uri];
-    componentToRender();
+    navigateTo(uri);
   });
 }
 
 function onFrontendLoad() {
   window.addEventListener('load', () => {
     const uri = removePathPrefix(window.location.pathname);
-    const componentToRender = routes[uri];
-    if (!componentToRender) throw Error(`The ${uri} ressource does not exist.`);
-
-    componentToRender();
+    navigateTo(uri);
   });
 }
 
+function navigateTo(uri) {
+  const componentToRender = routes[uri];
+  if (!componentToRender) throw Error(`The ${uri} resource does not exist.`);
 
+  componentToRender();
+  window.history.pushState({}, '', usePathPrefix(uri));
+}
 
 /* devrait rendre le pwd visible
 function onPasswordClick() {

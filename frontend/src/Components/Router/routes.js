@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import HomePage from '../Pages/HomePage';
 import LogInPage from '../Pages/LogInPage';
 import SignUpPage from '../Pages/SignUpPage';
@@ -10,7 +11,7 @@ import MatchList from '../Pages/MatchList';
 import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
 import Swipe from '../Pages/Swipe';
 import Quizz from '../Pages/Quizz';
-import bookDetails from '../Pages/bookDetails';
+import User from '../Pages/User';
 
 
 const routes = {
@@ -26,7 +27,7 @@ const routes = {
   '/books' : BookPageLinkWithApiBETA,
   '/swipe' : Swipe,
   '/quizz' : Quizz,
-  '/bookDetails' : bookDetails
+  '/listUsers' : User
 
 };
 
