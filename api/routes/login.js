@@ -2,39 +2,48 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 const express = require('express');
-const bodyParser = require('body-parser'); // Import body-parser
+
 const loginUser = require('../models/login');
 
 const router = express.Router();
-router.use(bodyParser.urlencoded({ extended: true })); // Use body-parser middleware
 
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
   console.log('USERS LOGIN');
 
-  const { email } = req.body; // Assuming your form sends email and password
+  const { email, password } = req.body;
 
-  console.log(`HERE it's the userLogin email: ${email}`);
+  console.log(`HERE it's the user email: ${email}`);
+  console.log(`HERE it's the user password: ${password}`);
 
   try {
-    const userFound = await loginUser(email); // Pass the email to your loginUser function
+    const userFound = await loginUser.loginUser(email, password);
 
     console.log(`User found: ${JSON.stringify(userFound)}`);
 
-    if (userFound.length > 0) { // Check if userFound is not an empty array
-      console.log('password correct');
-      req.session.user = userFound;
-      req.session.user_id = userFound[0].user_id; // Assuming user_id is a property in your user object
-      console.log(`HERE it's the req.session.user_id: ${req.session.user_id}`);
-      res.redirect('/');
+    if (userFound.length > 0) {
+      console.log('Password correct');
+      res.status(200).json(userFound);
     } else {
-      req.session.error = 'Invalid email or password';
-      console.log('PROBLEM ------------------------');
-      res.redirect('/login');
+      console.log('Invalid email or password');
+      res.status(401).json({ error: 'Invalid email or password' });
     }
   } catch (error) {
     console.error('Error during login:', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 module.exports = router;
+
+/* POST http://localhost:8070/api/login 500 (Internal Server Error)
+eval @ LogInPage.js:13
+asyncGeneratorStep @ LogInPage.js:5
+_next @ LogInPage.js:6
+eval @ LogInPage.js:6
+eval @ LogInPage.js:6
+handleLogin @ LogInPage.js:5
+LogInPage.js:36 Error during login: Error: fetch error : 500 : Internal Server Error
+    at HTMLFormElement.eval (LogInPage.js:22:15)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (LogInPage.js:5:103)
+    at _next (LogInPage.js:6:194) */

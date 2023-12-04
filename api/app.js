@@ -1,16 +1,20 @@
+/* eslint-disable no-console */
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const loginUser = require('./models/login');
 
 const corsOptions = {
-  origin: ['http://localhost:8080', 'https://e-baron.github.io'],
+  origin: ['http://localhost:8070', 'https://e-baron.github.io'],
 };
 
 const usersRouter = require('./routes/users');
 const pizzaRouter = require('./routes/pizzas');
 const authsRouter = require('./routes/auths');
 const booksRouter = require('./routes/books');
+const listUsersRoute = require('./routes/listUsers');
+const loginRoute = require('./routes/login');
 
 const app = express();
 
@@ -25,5 +29,29 @@ app.use('/users', usersRouter);
 app.use('/pizzas', pizzaRouter);
 app.use('/auths', authsRouter);
 app.use('/books', booksRouter);
+app.use('/listUsers', listUsersRoute);
+app.use('/login', loginRoute);
+
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Call your loginUser function to check the credentials
+    const userFound = await loginUser(email, password);
+
+    if (userFound.length > 0) {
+      // User authentication successful
+      req.session.user = userFound;
+      req.session.user_id = userFound[0].user_id;
+      res.status(200).json(userFound);
+    } else {
+      // User authentication failed
+      res.status(401).json({ error: 'Invalid email or password' });
+    }
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 module.exports = app;
