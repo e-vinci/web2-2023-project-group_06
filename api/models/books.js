@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const pg = require('pg');
 
@@ -14,19 +15,36 @@ const pool = new Pool({
   port: '5432',
 });
 
-const readAllbooks = () => new Promise((resolve, reject) => {
-  pool.query('SELECT * FROM project.books', (err, res) => {
-    if (err) {
-      console.log(err.message);
-      reject(err);
-    } else {
-      console.log('just do it');
-      resolve(res.rows);
-    }
-  });
-});
-/* const addUser = () => new Promise((resolve, reject) => {
-  pool.query('INSERT INTO ')
-}) */
+const readAllbooks = async () => {
+  try {
+    const res = await pool.query('SELECT * FROM project.books');
+    console.log('just do it');
+    return res.rows;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+const addOneBooks = async () => {
+  try {
+    const res = await pool.query("INSERT INTO project.books(title, nb_pages, author, description, score_sluttiness, score_fluffiness, score_darkness, photo) VALUES('The Sign of the Four',123,'sir Arhtur Conan Doyle','The Sign of the Four is a Sherlock Holmes novel where a complex plot involves service in East India.',0,0,10,'')");
+    return res;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+const readOneBook = async (id) => {
+  try {
+    const res = await pool.query('SELECT * FROM project.books WHERE id_book = $1', [id]);
+    console.log('get single book');
+    return res.rows;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
 
 module.exports = readAllbooks;

@@ -1,7 +1,6 @@
-import GamePage from '../Pages/GamePage';
+// eslint-disable-next-line import/no-cycle
 import HomePage from '../Pages/HomePage';
 import LogInPage from '../Pages/LogInPage';
-import NewPage from '../Pages/NewPage';
 import SignUpPage from '../Pages/SignUpPage';
 import AboutUsPage from '../Pages/AboutUs';
 import ProfilPage from '../Pages/ProfilPage';
@@ -12,12 +11,12 @@ import MatchList from '../Pages/MatchList';
 import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
 import Swipe from '../Pages/Swipe';
 import Quizz from '../Pages/Quizz';
+import User from '../Pages/User';
+import ProfilUser from '../Pages/Profil';
 
 
 const routes = {
   '/': HomePage,
-  '/game': GamePage,
-  '/new': NewPage,
   '/login': LogInPage,
   '/signup': SignUpPage,
   '/about' : AboutUsPage,
@@ -28,8 +27,9 @@ const routes = {
   '/matchList' : MatchList,
   '/books' : BookPageLinkWithApiBETA,
   '/swipe' : Swipe,
-  '/quizz' : Quizz
-
+  '/quizz' : Quizz,
+  '/listUsers' : User,
+  '/profiluser' : ProfilUser
 
 };
 
