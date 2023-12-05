@@ -12,6 +12,7 @@ import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
 import Swipe from '../Pages/Swipe';
 import Quizz from '../Pages/Quizz';
 import User from '../Pages/User';
+import ProfilUser from '../Pages/Profil';
 
 
 const routes = {
@@ -27,7 +28,8 @@ const routes = {
   '/books' : BookPageLinkWithApiBETA,
   '/swipe' : Swipe,
   '/quizz' : Quizz,
-  '/listUsers' : User
+  '/listUsers' : User,
+  '/profiluser' : ProfilUser
 
 };
 

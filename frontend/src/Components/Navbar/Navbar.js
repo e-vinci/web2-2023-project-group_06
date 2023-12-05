@@ -51,6 +51,9 @@ const Navbar = () => {
               <li class ="nav-item">
                 <a class="nav-link" href="#" data-uri="/swipe"> swipe (Alpha testing in progress)</a>
               </li>
+              <li class ="nav-item">
+                <a class="nav-link" href="#" data-uri="/profiluser"> User Profil</a>
+              </li>
             </ul>
           </div>
         </div>
