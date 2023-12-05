@@ -27,7 +27,7 @@ const createUser = async (login, password) => {
         quizz_score,
         profile_picture
       )
-      VALUES ( '', '', '', $1, $2, NULL, 0, '') RETURNING password, login
+      VALUES ( '', '', '', $2, $1, NULL, 0, '') RETURNING password, login
     `;
     const values = [password, login];
 
