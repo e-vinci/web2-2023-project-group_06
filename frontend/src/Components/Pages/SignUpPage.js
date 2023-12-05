@@ -35,28 +35,32 @@ const SignUpPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
-    const email = document.getElementById('email').value;
+    const login = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
+    console.log(login,password);
   
     if (password !== confirmPassword) {
       console.error('Passwords are not the same!');
       return;
     }
   
-    if (!email || !password) {
+    if (!login || !password) {
       console.error('Email and password are required!');
       return;
     }
   
     try {
-      const response = await fetch('/api/users/createUser', {
+      const option ={
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
-      });
+        body: JSON.stringify({ login, password }),
+      }
+      const response = await fetch('/api/users/createUser', option);
+      console.log("vous êtes ici ...");
+      console.log(response);
   
       if (!response.ok) {
         throw new Error('Failed to create user');
