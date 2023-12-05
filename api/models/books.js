@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+const pg = require('pg');
 
-const { Pool } = require('pg');
+const { Pool } = pg;
 
 // to secure the password
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
@@ -24,5 +25,8 @@ const readAllbooks = () => new Promise((resolve, reject) => {
     }
   });
 });
+/* const addUser = () => new Promise((resolve, reject) => {
+  pool.query('INSERT INTO ')
+}) */
 
 module.exports = readAllbooks;

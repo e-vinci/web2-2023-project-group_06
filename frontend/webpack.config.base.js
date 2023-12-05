@@ -35,7 +35,7 @@ module.exports = {
         warnings: false,
       },
     },
-    port: 8080,
+    port: 8070,
     host: 'localhost',
     allowedHosts: 'all',
     open: true, // open the default browser
