@@ -34,16 +34,3 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
-
-/* POST http://localhost:8070/api/login 500 (Internal Server Error)
-eval @ LogInPage.js:13
-asyncGeneratorStep @ LogInPage.js:5
-_next @ LogInPage.js:6
-eval @ LogInPage.js:6
-eval @ LogInPage.js:6
-handleLogin @ LogInPage.js:5
-LogInPage.js:36 Error during login: Error: fetch error : 500 : Internal Server Error
-    at HTMLFormElement.eval (LogInPage.js:22:15)
-    at Generator.next (<anonymous>)
-    at asyncGeneratorStep (LogInPage.js:5:103)
-    at _next (LogInPage.js:6:194) */

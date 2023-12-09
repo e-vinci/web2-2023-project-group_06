@@ -12,7 +12,7 @@ const Router = () => {
 
 function onButtonClick() {
   document.body.addEventListener('click', (event) => {
-    if (event.target.tagName === 'myButton' && event.target.dataset.uri) {
+    if (event.target.tagName === 'BUTTON' && event.target.classList.contains('myButton') && event.target.dataset.uri) {
       event.preventDefault();
       const {uri} = event.target.dataset;
       navigateTo(uri);

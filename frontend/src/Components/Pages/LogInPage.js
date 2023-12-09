@@ -27,6 +27,7 @@ const LogInPage = () => {
       if (userFound.length > 0) {
         console.log('Login successful:', userFound);
         // Redirect to the home page
+        console.log('REDIRECT TO / HOMEPAGE ?');
         window.location.href = '/';
       } else {
         console.log('Invalid email or password');
@@ -57,7 +58,7 @@ const LogInPage = () => {
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary btn-block btn-light myButton">Login</button>
-          <p>Not a member ? <a href="#" data-uri="/signup">Sign up</a></p>
+          <p>Not a member ? <a href="#" tagName="myButton" class="myButton" data-uri="/signup">Sign up</a></p>
         </div>
       </form>
     </div>
