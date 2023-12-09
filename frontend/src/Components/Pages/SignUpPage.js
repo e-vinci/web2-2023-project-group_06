@@ -34,45 +34,65 @@ const SignUpPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    const login = document.getElementById('email').value;
+
+    const loginInput = document.getElementById('email');
+    const login = loginInput.value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    console.log(login,password);
-  
-    if (password !== confirmPassword) {
-      console.error('Passwords are not the same!');
+    console.log(login, password);
+
+    // Vérifier si le login est un email valide
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(login)) {
+      const errorMessage = document.createElement('div');
+      errorMessage.classList.add('alert', 'alert-danger');
+      errorMessage.textContent = 'Le login doit être un email valide !';
+
+      const form = document.getElementById('signup-form');
+      form.insertAdjacentElement('afterend', errorMessage);
+
       return;
     }
-  
+
+    if (password !== confirmPassword) {
+      const errorMessage = document.createElement('div');
+      errorMessage.classList.add('alert', 'alert-danger');
+      errorMessage.textContent = 'La saisie du mot de passe et sa confirmation ne correspondent pas !';
+
+      const form = document.getElementById('signup-form');
+      form.insertAdjacentElement('afterend', errorMessage);
+
+      return;
+    }
+
     if (!login || !password) {
       console.error('Email and password are required!');
       return;
     }
-  
+
     try {
-      const option ={
+      const option = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ login, password }),
-      }
+      };
       const response = await fetch('/api/users/createUser', option);
       console.log("vous êtes ici ...");
       console.log(response);
-  
+
       if (!response.ok) {
         throw new Error('Failed to create user');
       }
-  
+
       window.location.href = '/login';
     } catch (error) {
       console.error('Error creating user:', error);
       // Handle error here
     }
   };
-  
+
   const form = document.getElementById('signup-form');
   form.addEventListener('submit', handleSubmit);
 };
