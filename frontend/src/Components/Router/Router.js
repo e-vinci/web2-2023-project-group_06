@@ -9,7 +9,6 @@ const Router = () => {
   // onPasswordClick();
 };
 
-
 function onButtonClick() {
   document.body.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON' && event.target.classList.contains('myButton') && event.target.dataset.uri) {
