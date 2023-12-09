@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
+const pg = require('pg');
 
-const { Pool } = require('pg');
+const { Pool } = pg;
 
 // to secure the password
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
@@ -35,4 +36,15 @@ const addOneBooks = async () => {
   }
 };
 
-module.exports = { readAllbooks, addOneBooks };
+const readOneBook = async (id) => {
+  try {
+    const res = await pool.query('SELECT * FROM project.books WHERE id_book = $1', [id]);
+    console.log('get single book');
+    return res.rows;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+module.exports = readAllbooks;

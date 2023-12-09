@@ -26,4 +26,6 @@ const getLog = () => new Promise((resolve, reject) => {
   });
 });
 
+
+
 module.exports = { getLog };
