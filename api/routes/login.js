@@ -3,6 +3,8 @@
 /* eslint-disable no-console */
 const express = require('express');
 
+const bcrypt = require('bcrypt');
+
 const loginUser = require('../models/login');
 
 const router = express.Router();
@@ -16,16 +18,27 @@ router.post('/', async (req, res) => {
   console.log(`HERE it's the user password: ${password}`);
 
   try {
-    const userFound = await loginUser.loginUser(email, password);
+    const userFound = await loginUser.loginUser(email);
 
     console.log(`User found: ${JSON.stringify(userFound)}`);
 
-    if (userFound.length > 0) {
-      console.log('Password correct');
-      res.status(200).json(userFound);
-    } else {
-      console.log('Invalid email or password2');
-      res.status(401).json({ error: 'Invalid credentials', field: 'email' });
+    if (userFound.length !== undefined) {
+      const hashedPassword = userFound[0].password;
+      console.log(`Stored hashed password: ${hashedPassword}`);
+      console.log(`password value: ${password}`);
+      // const enteredPassword = 'Azertyui1_'; // This is the user's entered password
+      // const storedHash = '$2y$10$DyeAAQUvkNF8yUPmjk.PkuyDCZojX0Fv8UvTu/tVGOEAa3N3pCqzO'; // This is the stored hash
+
+      if (bcrypt.compareSync(password, hashedPassword)) {
+        console.log('password correct');
+        if (userFound[0].is_admin === true) {
+          console.log('IS ADMIN');
+        }
+        res.status(200).json(userFound);
+      } else {
+        console.log('Invalid email or password2');
+        res.status(401).json({ error: 'Invalid credentials', field: 'email' });
+      }
     }
   } catch (error) {
     console.error('Error during login:', error);
@@ -35,3 +48,5 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+// $2b$10$lhk/KFKHX4QaNJOSWLvJKupws/Au/pUmFw3zAVtbY8QlaSjya0SKO = Azertyui1_
+// $2y$10$DyeAAQUvkNF8yUPmjk.PkuyDCZojX0Fv8UvTu/tVGOEAa3N3pCqzO
