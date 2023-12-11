@@ -47,4 +47,4 @@ const readOneBook = async (id) => {
   }
 };
 
-module.exports = readAllbooks;
+module.exports = { readAllbooks, addOneBooks, readOneBook };

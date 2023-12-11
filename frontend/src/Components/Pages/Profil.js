@@ -14,15 +14,15 @@ async function ProfilUser() {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">${data[0].name} ${data[0].surname}</h5>
+            <h5 class="card-title">${data[1].name} ${data[1].surname}</h5>
             <p>Description du profil :</p>
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text"> ${data[0].profile_description} </p>
+                    <p class="card-text"> ${data[1].profile_description} </p>
                 </div>
             </div>
-            <p class="card-text"><small class="text-muted">Catégorie : ${data[0].category}</small></p>
-            <p class="card-text">Score :<span class="badge badge-success">${data[0].quizz_score}</span></p>
+            <p class="card-text"><small class="text-muted">Catégorie : ${data[1].category}</small></p>
+            <p class="card-text">Score :<span class="badge badge-success">${data[1].quizz_score}</span></p>
           </div>
         </div>
       </div>

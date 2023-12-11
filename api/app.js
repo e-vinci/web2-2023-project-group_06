@@ -29,8 +29,8 @@ app.use(cors(corsOptions));
 app.use('/users', usersRouter);
 app.use('/pizzas', pizzaRouter);
 app.use('/auths', authsRouter);
-app.use('/books', booksRouter);
-app.use('/listUsers', listUsersRoute);
+app.use('/books', cors(corsOptions), booksRouter);
+app.use('/listUsers', cors(corsOptions), listUsersRoute);
 app.use('/login', loginRoute);
 app.use('/swipe', swipeRoute);
 
