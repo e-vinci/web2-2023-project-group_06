@@ -4,7 +4,7 @@ import logoImage from '../../img/boonder_advanced_logo.png';
 // eslint-disable-next-line import/no-cycle
 import routes from '../Router/routes';
 import { usePathPrefix } from '../../utils/path-prefix'; // Adjust the path based on the actual location of your path-prefix file
-
+import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 
 const HomePage = () => {
   const main = document.querySelector('main');
@@ -17,6 +17,7 @@ const HomePage = () => {
   };
 
   main.innerHTML = `
+  <div id="privacyPolicyWrapper"></div>
     <div class="text-center">
       <h1 class="display-1">Welcome to </h1> 
       <h1 class="display-3">Boonder</h1> <br>
@@ -43,6 +44,8 @@ const HomePage = () => {
       </footer>
     </div>
   `;
+
+  PrivacyPolicy();
 
   const loginButton = document.querySelector('[data-uri="/login"]');
   const signupButton = document.querySelector('[data-uri="/signup"]');
