@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable max-len */
 /* eslint-disable no-console */
 const express = require('express');
 
@@ -26,18 +24,21 @@ router.post('/', async (req, res) => {
       const hashedPassword = userFound[0].password;
       console.log(`Stored hashed password: ${hashedPassword}`);
       console.log(`password value: ${password}`);
-      // const enteredPassword = 'Azertyui1_'; // This is the user's entered password
-      // const storedHash = '$2y$10$DyeAAQUvkNF8yUPmjk.PkuyDCZojX0Fv8UvTu/tVGOEAa3N3pCqzO'; // This is the stored hash
 
       if (bcrypt.compareSync(password, hashedPassword)) {
         console.log('password correct');
         if (userFound[0].is_admin === true) {
           console.log('IS ADMIN');
         }
-        res.status(200).json(userFound);
+        res.status(200).json({ userFound, hashedPassword });
       } else {
-        console.log('Invalid email or password2');
-        res.status(401).json({ error: 'Invalid credentials', field: 'email' });
+        console.log('Invalid password blablablabla');
+        res.status(401).json({
+          userFound,
+          hashedPassword: null, // or null, depending on your logic
+          error: 'Invalid credentials',
+          field: 'password',
+        });
       }
     }
   } catch (error) {

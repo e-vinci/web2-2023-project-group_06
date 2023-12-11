@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -18,11 +19,11 @@ const pool = new Pool({
   port: '5432',
 });
 
-const loginUser = (email, password) => new Promise((resolve, reject) => {
-  pool.query('SELECT * FROM project.users WHERE login = $1 AND password = $2', [email, password], (err, res) => {
+const loginUser = (email) => new Promise((resolve, reject) => {
+  pool.query('SELECT * FROM project.users WHERE login = $1', [email], (err, res) => {
     if (err) {
-      console.log(err.message);
-      reject(err);
+      console.error(err.message);
+      reject(new Error('Database error'));
     } else {
       console.log('just do it');
 

@@ -1,35 +1,7 @@
 /* eslint-disable no-console */
+
 const LogInPage = () => {
   const main = document.querySelector('main');
-
-  const displayErrorMessage = (message, field) => {
-    const errorContainer = document.getElementById('errorContainer');
-    if (errorContainer) {
-      // Clear previous error messages
-      errorContainer.textContent = '';
-  
-      // Display specific error messages based on the provided message
-      switch (message) {
-        case 'invalid_credentials':
-          errorContainer.textContent = 'Invalid email or password. Please try again.';
-          break;
-        case 'server_error':
-          errorContainer.textContent = 'Error during login. Please try again later.';
-          break;
-        default:
-          errorContainer.textContent = 'An unexpected error occurred. Please try again.';
-      }
-      
-      // Use the correct field names for applying the CSS class
-      if (field === 'email' || field === 'password') {
-        const formField = document.getElementById(field);
-        if (formField) {
-          formField.classList.add('error'); // Add a CSS class for styling
-        }
-      }
-    }
-  };
-  
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -37,6 +9,7 @@ const LogInPage = () => {
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const form = document.getElementById('loginForm');
 
     try {
       const response = await fetch('/api/login', {
@@ -53,22 +26,32 @@ const LogInPage = () => {
         throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
       }
 
-      const userFound = await response.json();
+      const { userFound, hashedPassword, error, field } = await response.json();
 
-      if (userFound.length > 0) {
+      if (userFound && userFound.length > 0) {
+        if (hashedPassword === null) {
+          // Handle incorrect password
+          const errorMessage = document.createElement('div');
+          errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
+          errorMessage.textContent = 'Not the correct password';
+          form.appendChild(errorMessage);
+          return;
+        }
         console.log('Login successful:', userFound);
+        console.log('Hashed Password:', hashedPassword);
         // Redirect to the home page
         console.log('REDIRECT TO / HOMEPAGE ?');
         window.location.href = '/';
       } else {
-        console.log('Invalid email or password');
-        displayErrorMessage('invalid_credentials');
-        // Handle unsuccessful login, e.g., show an error message
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
+        errorMessage.textContent = error === 'Invalid credentials' && field === 'password'
+        ? 'Not the correct password'
+        : 'Bad email';
+        form.appendChild(errorMessage);
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      displayErrorMessage('server_error');
-      // Handle error, e.g., show an error message
+      console.log('Server error message:', error.message);
     }
   };
 
@@ -103,3 +86,14 @@ const LogInPage = () => {
 };
 
 export default LogInPage;
+/*
+      const form = document.getElementById('loginForm');
+
+      if (password.test(password)) {
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
+        errorMessage.textContent = 'Bad Password';
+        form.appendChild(errorMessage);
+        return;
+      }
+      */
