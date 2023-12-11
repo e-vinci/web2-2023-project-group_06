@@ -3,7 +3,7 @@ import bookDetails from "./bookDetails";
 const ListBooks = async () => {
     const main = document.querySelector('main');
 
-    const response = await fetch('/api/books');
+    const response = await fetch(`${process.env.API_BASE_URL}/books`);
     if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
     const data = await response.json();
 
@@ -17,7 +17,7 @@ const ListBooks = async () => {
     `).join('');
 
     main.innerHTML = `
-    <h1> Liste des livres proposés par la communauté </h1>
+    <div class="card-header text-center"><h1>Liste des livres proposés par la communauté</h1></div>
     <table class="table">
         <thead class="thead-dark">
             <tr>
