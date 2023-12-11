@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import logoImage from '../../img/Boonder_logo.png';
+import logoImage from '../../img/boonder_advanced_logo.png';
 // eslint-disable-next-line import/no-cycle
 import routes from '../Router/routes';
 import { usePathPrefix } from '../../utils/path-prefix'; // Adjust the path based on the actual location of your path-prefix file

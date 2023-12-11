@@ -104,6 +104,10 @@ const SignUpPage = () => {
       const response = await fetch('/api/users/createUser', option);
 
       if (!response.ok) {
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
+        errorMessage.textContent = 'Cet email existe deja !';
+        form.appendChild(errorMessage);
         throw new Error('Failed to create user');
       }
 
