@@ -1,4 +1,6 @@
-import logoImage from '../../img/Boonder_logo.png';
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
+import logoImage from '../../img/boonder_advanced_logo.png';
 
 const Swipe = () => {
   const main = document.querySelector('main');
@@ -20,17 +22,18 @@ const Swipe = () => {
 
   let isMouseDown = false;
   let startX;
+  let isSwipeEnded = true; // Ajout d'un indicateur pour suivre la fin du swipe
 
   swipeContainer.addEventListener('mousedown', handleMouseDown, false);
   swipeContainer.addEventListener('mousemove', handleMouseMove, false);
   document.addEventListener('mouseup', handleMouseUp, false);
 
-  function handleMouseDown(event) {
+  async function handleMouseDown(event) {
     isMouseDown = true;
     startX = event.clientX;
   }
 
-  function handleMouseMove(event) {
+  async function handleMouseMove(event) {
     if (!isMouseDown) {
       return;
     }
@@ -38,22 +41,40 @@ const Swipe = () => {
     const currentX = event.clientX;
     const difference = startX - currentX;
 
-    // Déplace l'image horizontalement en fonction de la différence
     swipableImage.style.transform = `translateX(${-difference}px)`;
 
-    // Activer le bouton à gauche si l'image est déplacée vers la gauche
     leftButton.disabled = difference > 0;
-
-    // Activer le bouton à droite si l'image est déplacée vers la droite
     rightButton.disabled = difference < 0;
+
+    // Met à jour l'indicateur de fin de swipe
+    isSwipeEnded = false;
   }
 
-  function handleMouseUp() {
+  async function handleMouseUp() {
     isMouseDown = false;
     startX = null;
-
-    // Réinitialise la position de l'image
+  
     swipableImage.style.transform = 'translateX(0)';
+  
+    // Exécute la requête si le swipe est terminé
+    if (!isSwipeEnded) {
+      try {
+        const response = await fetch('/api/swipe/swipe');
+        const imageData = await response.json();
+  
+        // Assurez-vous que imageData contient l'URL de l'image
+        if (imageData && imageData.photo) {
+          swipableImage.src = imageData.photo;
+  
+          // Met à jour l'indicateur pour éviter d'autres requêtes
+          isSwipeEnded = true;
+        } else {
+          console.error('Invalid image data received:', imageData);
+        }
+      } catch (error) {
+        console.error('Error fetching image:', error);
+      }
+    }
   }
 };
 

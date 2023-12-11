@@ -38,4 +38,16 @@ const createUser = async (login, password) => {
     throw new Error('Failed to create user');
   }
 };
-module.exports = {createUser};
+const existingUser = (email) => new Promise((resolve, reject) => {
+  pool.query('SELECT * FROM project.users WHERE login = $1', [email], (err, res) => {
+    if (err) {
+      console.log(err.message);
+      reject(err);
+    } else {
+      console.log('just do it');
+      resolve(res.rows);
+    }
+  });
+});
+module.exports = { createUser };
+module.exports = { existingUser };

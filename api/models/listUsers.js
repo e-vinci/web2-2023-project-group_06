@@ -26,6 +26,15 @@ const getLog = () => new Promise((resolve, reject) => {
   });
 });
 
+const readOneUser = async (id) => {
+  try {
+    const res = await pool.query('SELECT * FROM project.users WHERE id_user = $1', [id]);
+    console.log('get single user');
+    return res.rows;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
 
-
-module.exports = { getLog };
+module.exports = { getLog, readOneUser };

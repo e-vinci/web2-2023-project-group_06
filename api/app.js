@@ -15,6 +15,7 @@ const authsRouter = require('./routes/auths');
 const booksRouter = require('./routes/books');
 const listUsersRoute = require('./routes/listUsers');
 const loginRoute = require('./routes/login');
+const swipeRoute = require('./routes/swipes');
 
 const app = express();
 
@@ -28,9 +29,10 @@ app.use(cors(corsOptions));
 app.use('/users', usersRouter);
 app.use('/pizzas', pizzaRouter);
 app.use('/auths', authsRouter);
-app.use('/books', booksRouter);
-app.use('/listUsers', listUsersRoute);
+app.use('/books', cors(corsOptions), booksRouter);
+app.use('/listUsers', cors(corsOptions), listUsersRoute);
 app.use('/login', loginRoute);
+app.use('/swipe', swipeRoute);
 
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;

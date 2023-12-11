@@ -61,7 +61,6 @@ const SignUpPage = () => {
       return;
     }
 
-    // Vérifier si le login est un email valide
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(login)) {
       const errorMessage = document.createElement('div');
@@ -80,7 +79,7 @@ const SignUpPage = () => {
     }
 
     if (!login || !password) {
-      console.error('Email and password are required!');
+      console.error("L'email et mot de passe sont requis !");
       return;
     }
 
@@ -105,6 +104,10 @@ const SignUpPage = () => {
       const response = await fetch('/api/users/createUser', option);
 
       if (!response.ok) {
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
+        errorMessage.textContent = 'Cet email existe deja !';
+        form.appendChild(errorMessage);
         throw new Error('Failed to create user');
       }
 
