@@ -1,8 +1,14 @@
+// eslint-disable-next-line import/no-extraneous-dependencies, import/extensions
+import anime from 'animejs/lib/anime.es.js';
 import bookDetails from "./bookDetails";
 /* eslint-disable no-console */
 const ListBooks = async () => {
     const main = document.querySelector('main');
-
+    // CSS
+    main.style.display = 'flex';
+    main.style.justifyContent = 'center';
+    main.style.fontSize = '1.5em';
+ 
     const response = await fetch(`${process.env.API_BASE_URL}/books`);
     if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
     const data = await response.json();
@@ -16,36 +22,52 @@ const ListBooks = async () => {
         </tr>
     `).join('');
 
-    main.innerHTML = `
-    <div class="card-header text-center"><h1>Liste des livres proposés par la communauté</h1></div>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>Titre du Livre</th>
-                <th>Auteur</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            ${rows}
-        </tbody>
-    </table>
-    `;
+    // Animation de fou
+    const battery = {
+        charged: '0%',
+    }
+    anime({
+        targets: battery,
+        charged: '100%',
+        round: 0.1,
+        easing: 'linear',
+        update() {
+            main.innerHTML = JSON.stringify(battery);
+        },
+        complete() {
+            // Remplacez le contenu de 'main' une fois l'animation terminée
+            main.innerHTML = `
+                <div class="card-header text-center"><h1>Liste des livres proposés par la communauté</h1></div>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre du Livre</th>
+                            <th>Auteur</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+            `;
 
-    const links = document.querySelectorAll('.book-link');
+            const links = document.querySelectorAll('.book-link');
 
-    links.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-
-            // Récupérez l'ID du livre à partir de l'attribut 'data-id'
-            const bookId = event.target.dataset.id;
-            console.log(bookId);
-
-            // Appelez la fonction bookDetails avec l'ID du livre
-            bookDetails(bookId);
-        });
+            links.forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+        
+                    // Récupérez l'ID du livre à partir de l'attribut 'data-id'
+                    const bookId = event.target.dataset.id;
+                    console.log(bookId);
+        
+                    // Appelez la fonction bookDetails avec l'ID du livre
+                    bookDetails(bookId);
+                });
+            });
+        }
     });
 };
 
