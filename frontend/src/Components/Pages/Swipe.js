@@ -1,6 +1,5 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/no-unresolved */
 import logoImage from '../../img/Boonder_logo.png';
 import heartImg from '../../img/heart_img.png';
 
@@ -9,7 +8,7 @@ const Swipe = () => {
   const mainfiller = `
     <h1> Liste des livres proposés par la communauté </h1>
     <div id="swipeContainer" class="container mt-5 text-center">
-      <img src="${logoImage}" alt="logo" class="image-fluid w-25 mx-auto" style="position: relative" id="swipableImage" draggable="false"> 
+      <img src="" alt="logo" class="image-fluid w-25 mx-auto" style="position: relative" id="swipableImage" draggable="false"> 
     </div>
     <button id="leftButton" disabled>Activer à gauche</button>
     <button id="rightButton" disabled>Activer à droite</button>
@@ -35,10 +34,30 @@ const Swipe = () => {
     startX = event.clientX;
   }
 
-  function handleMouseMove(event) {
+  async function handleMouseMove(event) {
     if (!isMouseDown) {
       return;
     }
+
+// Récupère l'image du serveur
+try {
+  const response = await fetch('/api/swipe');
+  const imageData = await response.json();
+
+  // Crée un nouvel élément img
+  const newImage = new Image();
+  
+  // Attache un gestionnaire d'événements pour le chargement de l'image
+  newImage.onload = () => {
+    // Met à jour l'image avec celle nouvellement créée
+    swipableImage.src = newImage.src;
+  };
+
+  // Définit la source de l'image nouvellement créée
+  newImage.src = imageData.photo;
+} catch (error) {
+  console.error('Error fetching image:', error);
+}
 
     const currentX = event.clientX;
     const difference = startX - currentX;
@@ -67,8 +86,9 @@ const Swipe = () => {
         heart.style.backgroundSize = "cover";
         heart.style.transition = "transform 0.5s ease-out"; // Propriétés d'animation
       }
+
+      
     }
-    
   }
 
   function handleMouseUp() {
@@ -84,33 +104,6 @@ const Swipe = () => {
         document.body.removeChild(heart);
         heart = null; // Réinitialise la variable heart
       }, 500); // Ajoutez une durée pour correspondre à la durée de l'animation du cœur
-    }
-    if(leftButton){
-      
-      /* router.post('/', async (req, res) => {
-      
-        const { email, password } = req.body;
-      
-        console.log(`HERE it's the book id: ${id}`);
-
-      
-        try {
-          const userFound = await loginUser.loginUser(email, password);
-      
-          console.log(`User found: ${JSON.stringify(userFound)}`);
-      
-          if (userFound.length > 0) {
-            console.log('Password correct');
-            res.status(200).json(userFound);
-          } else {
-            console.log('Invalid email or password');
-            res.status(401).json({ error: 'Invalid email or password' });
-          }
-        } catch (error) {
-          console.error('Error during login:', error);
-          res.status(500).json({ error: 'Internal Server Error' });
-        }
-      }); */
     }
   }
 };
