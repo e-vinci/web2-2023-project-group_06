@@ -3,11 +3,14 @@ const jwt = require('jsonwebtoken');
 // const { readOneUserFromUsername } = require('../models/users');
 const { login } = require('../models/login');
 
-const jwtSecret = 'ilovemypizza!';
+const jwtSecret = 'jwtSecret!';
 
 const authorize = (req, res, next) => {
   const token = req.get('authorization');
-  if (!token) return res.sendStatus(401);
+  if (!token) {
+    console.log(`pas de token ? ${token}`);
+    return res.sendStatus(401);
+  }
 
   try {
     const decoded = jwt.verify(token, jwtSecret);

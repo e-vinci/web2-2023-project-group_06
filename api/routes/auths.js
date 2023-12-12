@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
@@ -28,12 +29,12 @@ router.post('/register', (req, res) => {
 });
 
 /* Login a user */
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) return res.sendStatus(400); // 400 Bad Request
 
-  const authenticatedUser = login(username, password);
+  const authenticatedUser = await login(username, password);
 
   if (!authenticatedUser) return res.sendStatus(401); // 401 Unauthorized
 
@@ -42,6 +43,9 @@ router.post('/login', (req, res) => {
     jwtSecret,
     { expiresIn: lifetimeJwt },
   );
+
+  console.log('User logged in:', authenticatedUser);
+  console.log('Generated token:', token);
 
   return res.json({ user: authenticatedUser, token });
 });

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const express = require('express');
 
 const bookActions = require('../models/books');
@@ -22,6 +23,7 @@ router.get('/add', async (req, res) => {
   }
 });
 
+// router.get('/:id', authorize, async (req, res) => {            cense n affiche la page que lorsqu on s est login, marche pas encore, mais j ai reussi a generé un token en faisant un login regarde dans les consoles.log de /routes/login.js
 router.get('/:id', async (req, res) => {
   try {
     const book = await bookActions.readOneBook(req.params.id);

@@ -1,7 +1,17 @@
 /* eslint-disable no-console */
+// eslint-disable-next-line import/no-cycle
+import routes from '../Router/routes';
+import { usePathPrefix } from '../../utils/path-prefix'; // Adjust the path based on the actual location of your path-prefix file
 
 const LogInPage = () => {
   const main = document.querySelector('main');
+
+  const handleNavigation = (uri) => {
+    const componentToRender = routes[uri];
+    if (!componentToRender) throw Error(`The ${uri} resource does not exist.`);
+    componentToRender();
+    window.history.pushState({}, '', usePathPrefix(uri));
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -29,14 +39,6 @@ const LogInPage = () => {
       const { userFound, hashedPassword, error, field } = await response.json();
 
       if (userFound && userFound.length > 0) {
-        if (hashedPassword === null) {
-          // Handle incorrect password
-          const errorMessage = document.createElement('div');
-          errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
-          errorMessage.textContent = 'Not the correct password';
-          form.appendChild(errorMessage);
-          return;
-        }
         console.log('Login successful:', userFound);
         console.log('Hashed Password:', hashedPassword);
         // Redirect to the home page
@@ -52,6 +54,7 @@ const LogInPage = () => {
       }
     } catch (error) {
       console.log('Server error message:', error.message);
+      console.log('Client-side error:', error);
     }
   };
 
@@ -80,20 +83,16 @@ const LogInPage = () => {
       </form>
     </div>
   `;
+  const signupButton = document.querySelector('[data-uri="/signup"]');
+  
+  signupButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    handleNavigation('/signup');
+  });
 
   const form = document.getElementById('loginForm');
   form.addEventListener('submit', handleLogin);
 };
 
 export default LogInPage;
-/*
-      const form = document.getElementById('loginForm');
 
-      if (password.test(password)) {
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
-        errorMessage.textContent = 'Bad Password';
-        form.appendChild(errorMessage);
-        return;
-      }
-      */

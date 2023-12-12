@@ -3,6 +3,10 @@ const express = require('express');
 
 const bcrypt = require('bcrypt');
 
+const jwt = require('jsonwebtoken');
+
+const jwtSecret = 'jwtSecret!';
+
 const loginUser = require('../models/login');
 
 const router = express.Router();
@@ -21,7 +25,9 @@ router.post('/', async (req, res) => {
     console.log(`User found: ${JSON.stringify(userFound)}`);
 
     if (userFound.length !== undefined) {
+      const userName = userFound[0].login;
       const hashedPassword = userFound[0].password;
+      const token = jwt.sign({ userName, hashedPassword }, jwtSecret);
       console.log(`Stored hashed password: ${hashedPassword}`);
       console.log(`password value: ${password}`);
 
@@ -30,7 +36,8 @@ router.post('/', async (req, res) => {
         if (userFound[0].is_admin === true) {
           console.log('IS ADMIN');
         }
-        res.status(200).json({ userFound, hashedPassword });
+        console.log(`token ............${token}`); // ici tu peux voir le token genere et si tu vas sur jwt.io et que tu rentres le token genere tu peux voir que c est les bonnes infos
+        res.status(200).json({ token, userFound, hashedPassword });
       } else {
         console.log('Invalid password blablablabla');
         res.status(401).json({
@@ -49,5 +56,4 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
-// $2b$10$lhk/KFKHX4QaNJOSWLvJKupws/Au/pUmFw3zAVtbY8QlaSjya0SKO = Azertyui1_
-// $2y$10$DyeAAQUvkNF8yUPmjk.PkuyDCZojX0Fv8UvTu/tVGOEAa3N3pCqzO
+// mdp hashé = Azertyui1_
