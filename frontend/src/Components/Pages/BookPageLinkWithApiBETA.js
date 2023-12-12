@@ -7,7 +7,7 @@ const ListBooks = async () => {
     // CSS
     main.style.display = 'flex';
     main.style.justifyContent = 'center';
-    main.style.fontSize = '1.5em';
+    main.style.fontSize = '1em';
     main.style.width = '100vw';
     main.style.overflowX = 'hidden';
  
