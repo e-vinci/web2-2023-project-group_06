@@ -61,7 +61,6 @@ const Swipe = () => {
       try {
         const response = await fetch(`${process.env.API_BASE_URL}/swipe`);
         const imageData = await response.json();
-        console.log('image:', imageData[0].photo);
   
         // Assurez-vous que imageData contient l'URL de l'image
         if (imageData[0] && imageData[0].photo) {
