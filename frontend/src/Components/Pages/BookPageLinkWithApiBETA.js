@@ -8,6 +8,8 @@ const ListBooks = async () => {
     main.style.display = 'flex';
     main.style.justifyContent = 'center';
     main.style.fontSize = '1.5em';
+    main.style.width = '100vw';
+    main.style.overflowX = 'hidden';
  
     const response = await fetch(`${process.env.API_BASE_URL}/books`);
     if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);

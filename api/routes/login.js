@@ -24,7 +24,8 @@ router.post('/', async (req, res) => {
 
     console.log(`User found: ${JSON.stringify(userFound)}`);
 
-    if (userFound.length !== undefined) {
+    // j'ai rajouté ici dans la condition userFound && (chuqi)
+    if (userFound && userFound.length !== undefined) {
       const userName = userFound[0].login;
       const hashedPassword = userFound[0].password;
       const token = jwt.sign({ userName, hashedPassword }, jwtSecret);
@@ -37,6 +38,7 @@ router.post('/', async (req, res) => {
           console.log('IS ADMIN');
         }
         console.log(`token ............${token}`); // ici tu peux voir le token genere et si tu vas sur jwt.io et que tu rentres le token genere tu peux voir que c est les bonnes infos
+
         res.status(200).json({ token, userFound, hashedPassword });
       } else {
         console.log('Invalid password blablablabla');

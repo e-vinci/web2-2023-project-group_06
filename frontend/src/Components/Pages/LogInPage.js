@@ -41,6 +41,10 @@ const LogInPage = () => {
       if (userFound && userFound.length > 0) {
         console.log('Login successful:', userFound);
         console.log('Hashed Password:', hashedPassword);
+
+        // AJOUTER DANS LOCALSTORAGE (chuqi)
+        localStorage.setItem('user', JSON.stringify(userFound));
+
         // Redirect to the home page
         console.log('REDIRECT TO / HOMEPAGE ?');
         window.location.href = '/';

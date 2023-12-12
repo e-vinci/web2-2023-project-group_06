@@ -73,7 +73,7 @@ const HomePage = () => {
 
   anime({
     targets: '#logoo',
-    translateY: [
+    translateX: [
       { value: 200, duration: 600 },
       { value: 0, duration: 600 }
     ],
