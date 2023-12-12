@@ -1,6 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable no-console */
+// eslint-disable-next-line import/no-extraneous-dependencies
+
 const { Pool } = require('pg');
 
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
+
 const pool = new Pool({
   user: 'brhhbrnw',
   host: 'flora.db.elephantsql.com',
@@ -14,7 +19,7 @@ const getImage = async (number) => {
     const res = await pool.query('SELECT photo FROM project.books WHERE id_book = $1', [number]);
     return res.rows;
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
     throw err;
   }
 };

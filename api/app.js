@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const path = require('path');
 const loginUser = require('./models/login');
 
 const corsOptions = {
@@ -33,6 +34,9 @@ app.use('/books', cors(corsOptions), booksRouter);
 app.use('/listUsers', cors(corsOptions), listUsersRoute);
 app.use('/login', loginRoute);
 app.use('/swipe', swipeRoute);
+
+// Indique à Express de servir les fichiers statiques du répertoire 'public'
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;

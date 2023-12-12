@@ -1,4 +1,6 @@
 async function ProfilUser() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user) {
     const main = document.querySelector('main');
 
     const response = await fetch('/api/listUsers');
@@ -28,12 +30,14 @@ async function ProfilUser() {
       </div>
     </div>
   </div>
-    `
-
-
+    `;
+  } else {
+      const main = document.querySelector('main');
+      main.innerHTML = `
+              <h1>You are not supposed to be here</h1>
+              `;
+      console.log('user not connected ?');
+  }
 }
-
-
-
 
 export default ProfilUser;

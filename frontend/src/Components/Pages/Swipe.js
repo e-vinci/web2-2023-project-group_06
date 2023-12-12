@@ -1,9 +1,13 @@
+/* eslint-disable no-console */
+/* eslint-disable no-inner-declarations */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import logoImage from '../../img/boonder_advanced_logo.png';
 
 const Swipe = () => {
-  const main = document.querySelector('main');
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user) {
+      const main = document.querySelector('main');
   const mainfiller = `
     <h1> Liste des livres proposés par la communauté </h1>
     <div id="swipeContainer" class="container mt-5 text-center">
@@ -59,22 +63,29 @@ const Swipe = () => {
     // Exécute la requête si le swipe est terminé
     if (!isSwipeEnded) {
       try {
-        const response = await fetch('/api/swipe/swipe');
+        const response = await fetch(`${process.env.API_BASE_URL}/swipe`);
         const imageData = await response.json();
   
         // Assurez-vous que imageData contient l'URL de l'image
-        if (imageData && imageData.photo) {
-          swipableImage.src = imageData.photo;
+        if (imageData[0] && imageData[0].photo) {
+          swipableImage.src = imageData[0].photo;
   
           // Met à jour l'indicateur pour éviter d'autres requêtes
           isSwipeEnded = true;
         } else {
-          console.error('Invalid image data received:', imageData);
+          console.error('Invalid image data received:', imageData[0]);
         }
       } catch (error) {
         console.error('Error fetching image:', error);
       }
     }
+  }
+  } else {
+      const main = document.querySelector('main');
+      main.innerHTML = `
+              <h1>You are not supposed to be here</h1>
+              `;
+      console.log('user not connected ?');
   }
 };
 

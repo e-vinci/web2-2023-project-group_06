@@ -37,7 +37,9 @@ const loginUser = (email) => new Promise((resolve, reject) => {
         res,
         token,
       };
-      resolve(authenticatedUser.rows);
+
+      // bonne affichage des contextes : authenticatedUser.res.rows au lieu de authenticatedUser (chuqi)
+      resolve(authenticatedUser.res.rows);
     }
   });
 });

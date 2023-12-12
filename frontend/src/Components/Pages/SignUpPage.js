@@ -1,6 +1,6 @@
 const SignUpPage = () => {
   const main = document.querySelector('main');
-  const mainfiller = `
+  const mainfillerWithToggle = `
     <header class="text-center">
       <div id="navbarWrapper"></div>    
       <h1>Welcome to Boonder</h1>
@@ -18,12 +18,17 @@ const SignUpPage = () => {
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" minlength="8" pattern="^(?=.*[A-Z])(?=.*[0-9]).*$" required>
+              <div class="input-group">
+                <input type="password" class="form-control" id="password" placeholder="Password" minlength="8" pattern="^(?=.*[A-Z])(?=.*[0-9]).*$" required>
+                <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn">
+                  Show/Hide
+                </button>
+              </div>
               <div class="invalid-feedback">
-                Votre mot de passe n'est pas conforme avec les conditions !
+                Your password does not meet the requirements!
               </div>
               <div class="form-text">
-                Votre mot de passe doit avoir au moins 8 caractères dont 1 majuscule et 1 caractère alphanumérique
+                Your password must be at least 8 characters long with at least 1 uppercase letter and 1 alphanumeric character.
               </div>
             </div>
             <div class="mb-3">
@@ -32,6 +37,7 @@ const SignUpPage = () => {
               <div class="invalid-feedback">
                 Passwords do not match.
               </div>
+              <div id="errorContainer" class="mt-3"></div>
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary btn-block myButton">Sign Up</button>
@@ -43,10 +49,27 @@ const SignUpPage = () => {
     <script src="Router.js"></script>
   `;
   
-  main.innerHTML = mainfiller;
+  main.innerHTML = mainfillerWithToggle;
+
+  const togglePasswordVisibility = () => {
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      confirmPasswordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+      confirmPasswordInput.type = 'password';
+    }
+  };
+
+  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+  togglePasswordBtn.addEventListener('click', togglePasswordVisibility);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
     const loginInput = document.getElementById('email');
     const login = loginInput.value;
@@ -94,6 +117,7 @@ const SignUpPage = () => {
     }
 
     try {
+      const errorContainer = document.getElementById('errorContainer');
       const option = {
         method: 'POST',
         headers: {
@@ -102,21 +126,31 @@ const SignUpPage = () => {
         body: JSON.stringify({ login, password }),
       };
       const response = await fetch('/api/users/createUser', option);
-
+    
       if (!response.ok) {
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
-        errorMessage.textContent = 'Cet email existe deja !';
-        form.appendChild(errorMessage);
+        const errorData = await response.json();
+        if (errorData.error === 'Cet email est déjà assigné à un compte.') {
+          const errorMessage = document.createElement('div');
+          errorMessage.classList.add('alert', 'alert-danger');
+          errorMessage.textContent = errorData.error;
+    
+          // Efface le contenu précédent
+          errorContainer.innerHTML = '';
+    
+          // Ajoute le message d'erreur dans le conteneur dédié
+          errorContainer.appendChild(errorMessage);
+        }
         throw new Error('Failed to create user');
       }
-
+    
       window.location.href = '/login';
     } catch (error) {
       console.error('Error creating user:', error);
       // Handle error here
     }
+    
   };
+
 
   const form = document.getElementById('signup-form');
   form.addEventListener('submit', handleSubmit);

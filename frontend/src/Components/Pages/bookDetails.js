@@ -1,4 +1,6 @@
 async function bookDetails(id){
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
         console.log(`before : ${id}`);
         // Faites une requête à l'API pour obtenir les détails du livre
         try {
@@ -32,6 +34,13 @@ async function bookDetails(id){
         } catch (error) {
             console.error('Error:', error);
         }
+    } else {
+        const main = document.querySelector('main');
+        main.innerHTML = `
+                <h1>You are not supposed to be here</h1>
+                `;
+        console.log('user not connected ?');
     }
+}
 
 export default bookDetails;

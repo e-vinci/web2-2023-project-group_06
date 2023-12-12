@@ -18,6 +18,31 @@ const HomePage = () => {
     window.history.pushState({}, '', usePathPrefix(uri));
   };
 
+    // l'élément dans localstorage
+    const user = JSON.parse(localStorage.getItem('user'));
+
+  if(user) {
+    main.innerHTML = `
+    <div id="privacyPolicyWrapper"></div>
+      <div class="text-center">
+        <h1 class="display-1">Welcome to </h1> 
+        <h1 class="display-3">Boonder</h1> <br>
+        <h2>The place to meet new books</h2> 
+        <h3>Like Swipe Match</h3>
+  
+        <div id="logoo">
+        <img src="${logoImage}" alt="logo" class="image-fluid w-25" > 
+        </div>
+        <br><br><br>
+        <footer class="bottom">
+          <div class="mb-2">
+            <a href="#" class="btn btn-light myButton" data-uri="/about">About Us</a><br>
+            <p>Made by beautiful people</p>
+            <br>
+          </div> 
+        </footer>
+      </div>`
+  } else {
   main.innerHTML = `
   <div id="privacyPolicyWrapper"></div>
     <div class="text-center">
@@ -31,7 +56,7 @@ const HomePage = () => {
       </div>
       <br><br><br>
 
-      <div class="mb-3">
+     <div class="mb-3">
         <a href="#" class="btn btn-light myButton" data-uri="/login">Login</a>
       </div>
 
@@ -39,7 +64,7 @@ const HomePage = () => {
         New here ? 
         <a href="#" class="btn btn-light myButton" data-uri="/signup">Sign up</a>
       </div>
-
+    
       <footer class="bottom">
         <div class="mb-2">
           <a href="#" class="btn btn-light myButton" data-uri="/about">About Us</a><br>
@@ -48,9 +73,8 @@ const HomePage = () => {
         </div> 
       </footer>
     </div>
-  `;
 
-  PrivacyPolicy();
+  `;
 
   const loginButton = document.querySelector('[data-uri="/login"]');
   const signupButton = document.querySelector('[data-uri="/signup"]');
@@ -70,10 +94,17 @@ const HomePage = () => {
     event.preventDefault();
     handleNavigation('/about');
   });
+}
+
+
+  PrivacyPolicy();
+
+  
 
   anime({
     targets: '#logoo',
-    translateY: [
+    translateX: [
+      { value: -200, duration: 600 },
       { value: 200, duration: 600 },
       { value: 0, duration: 600 }
     ],
@@ -93,6 +124,7 @@ const HomePage = () => {
     loop: true
   });
 
+
   const logoo = document.querySelector('#logoo');
   logoo.addEventListener('click', () => {
     anime({
@@ -103,6 +135,7 @@ const HomePage = () => {
       easing: 'easeInOutSine'
     });
   });
+
 };
 
 export default HomePage;
