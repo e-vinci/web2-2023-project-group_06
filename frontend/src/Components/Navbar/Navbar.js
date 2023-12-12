@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
 
@@ -23,8 +24,7 @@ if(user){
 }
 
   
-    console.log("admin est : ");
-    console.log(admin);
+    console.log(`admin est : ${admin}`);
 
   const navbar = `
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,29 +42,31 @@ if(user){
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/profil">Profile</a>
-              </li>
-              <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/proposition">Suggest a book</a>
-              </li>
-              <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/listpropositions">List of the book suggestions</a>
-              </li>
-              <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/quizz"> Quizz (temporaire)</a>
-              </li>
-              <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/swipe"> swipe (Alpha testing in progress)</a>
-              </li>
+              ${user ? ` 
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/profil">Profile</a>
+                </li>
+                <li class ="nav-item">
+                  <a class="nav-link" href="#" data-uri="/proposition">Suggest a book</a>
+                </li>
+                <li class ="nav-item">
+                  <a class="nav-link" href="#" data-uri="/listpropositions">List of the book suggestions</a>
+                </li>
+                <li class ="nav-item">
+                  <a class="nav-link" href="#" data-uri="/quizz"> Quizz (temporaire)</a>
+                </li>
+                <li class ="nav-item">
+                  <a class="nav-link" href="#" data-uri="/swipe"> swipe (Alpha testing in progress)</a>
+                </li>
+              </li>` : ''}
               ${admin ? `<li class="nav-item">
-              <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/listUsers"> listUsers</a>
-              </li>
-              <li class ="nav-item">
-                <a class="nav-link" href="#" data-uri="/books"> Liste des livres crée par défaut (BETA)</a>
-              </li>
-            </li>` : ''}
+                <li class ="nav-item">
+                  <a class="nav-link" href="#" data-uri="/listUsers"> listUsers</a>
+                </li>
+                <li class ="nav-item">
+                  <a class="nav-link" href="#" data-uri="/books"> Liste des livres crée par défaut (BETA)</a>
+                </li>
+              </li>` : ''}
             ${user && !admin ? `<li class="nav-item">
               <li class ="nav-item">
                 <a class="nav-link" href="#" data-uri="/profiluser"> User Profil</a>

@@ -1,9 +1,13 @@
+/* eslint-disable no-console */
+/* eslint-disable no-inner-declarations */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import logoImage from '../../img/boonder_advanced_logo.png';
 
 const Swipe = () => {
-  const main = document.querySelector('main');
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user) {
+      const main = document.querySelector('main');
   const mainfiller = `
     <h1> Liste des livres proposés par la communauté </h1>
     <div id="swipeContainer" class="container mt-5 text-center">
@@ -75,6 +79,13 @@ const Swipe = () => {
         console.error('Error fetching image:', error);
       }
     }
+  }
+  } else {
+      const main = document.querySelector('main');
+      main.innerHTML = `
+              <h1>You are not supposed to be here</h1>
+              `;
+      console.log('user not connected ?');
   }
 };
 

@@ -1,4 +1,6 @@
 const ListBookProposition = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
     const main = document.querySelector('main');
     const mainfiller = `
     <h1> List of the books suggested by the community </h1>
@@ -29,6 +31,13 @@ const ListBookProposition = () => {
     `;
 
     main.innerHTML = mainfiller;
+    } else {
+        const main = document.querySelector('main');
+        main.innerHTML = `
+                <h1>You are not supposed to be here</h1>
+                `;
+        console.log('user not connected ?');
+    }
 };
 
 export default ListBookProposition;
