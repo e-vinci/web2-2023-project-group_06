@@ -62,7 +62,7 @@ const LogInPage = () => {
     }
   };
 
-  main.innerHTML = `
+  const mainFiller = `
     <header class="text-center"><div id="navbarWrapper"></div>
         <h1>Welcome to Boonder</h1>
     </header>
@@ -76,7 +76,12 @@ const LogInPage = () => {
         </div>
         <div class="col-lg-4 mx-auto">
           <div class="form-group">
-            <input type="password" name="password" class="form-control mb-2" id="password" placeholder="Password">    
+            <div class="input-group">
+              <input type="password" name="password" class="form-control mb-2" id="password" placeholder="Password" required>    
+              <button class="btn btn-outline-secondary mb-2" type="button" id="togglePasswordBtn">
+                Show/Hide
+              </button>
+            </div>
           </div>
         </div>
         <div class="text-center">
@@ -87,12 +92,27 @@ const LogInPage = () => {
       </form>
     </div>
   `;
+  main.innerHTML = mainFiller;
+
   const signupButton = document.querySelector('[data-uri="/signup"]');
   
   signupButton.addEventListener('click', (event) => {
     event.preventDefault();
     handleNavigation('/signup');
   });
+
+  const togglePasswordVisibility = () => {
+    const passwordInput = document.getElementById('password');
+    
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  };
+
+  const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+  togglePasswordBtn.addEventListener('click', togglePasswordVisibility);
 
   const form = document.getElementById('loginForm');
   form.addEventListener('submit', handleLogin);
