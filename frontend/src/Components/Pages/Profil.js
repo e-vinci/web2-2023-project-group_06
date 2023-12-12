@@ -1,9 +1,12 @@
+// eslint-disable-next-line import/extensions
+import anime from 'animejs/lib/anime.es.js'; 
+
 async function ProfilUser() {
+  
   const user = JSON.parse(localStorage.getItem('user'))[0];
   if (user) {
     console.log(user);
-
-  console.log(user.profile_picture)
+    console.log(user.profile_picture)
 
     const main = document.querySelector('main');
 
@@ -19,18 +22,31 @@ async function ProfilUser() {
             <h5 class="card-title">${user.name} ${user.surname}</h5>
             <p>Description du profil :</p>
             <div class="card">
-                <div class="card-body">
-                    <p class="card-text"> ${user.profile_description} </p>
-                </div>
+              <div class="card-body">
+                <p class="card-text"> ${user.profile_description} </p>
+              </div>
             </div>
             <p class="card-text"><small class="text-muted">Catégorie : ${user.category}</small></p>
             <p class="card-text">Score :<span class="badge badge-success">${user.quizz_score}</span></p>
           </div>
         </div>
       </div>
+      <div class="card-footer text-right">
+        <a href="#" class="btn btn-light myButton" data-uri="/profil">Modifier Profil</a>
+      </div>
     </div>
   </div>
+  
     `;
+
+    anime({
+      targets: '.card',
+      scale: [1, 1.05],
+      rotate: '1turn',
+      direction: 'alternate',
+      easing: 'easeInOutSine',
+      duration: 2000
+    });
 
   } else {
       const main = document.querySelector('main');

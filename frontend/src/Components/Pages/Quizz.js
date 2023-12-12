@@ -125,7 +125,7 @@ const Quizz = () => {
         </section>
 
         `;
-        
+
         main.innerHTML = mainfiller;
     } else {
         const main = document.querySelector('main');
