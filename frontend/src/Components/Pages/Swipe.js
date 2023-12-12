@@ -59,17 +59,18 @@ const Swipe = () => {
     // Exécute la requête si le swipe est terminé
     if (!isSwipeEnded) {
       try {
-        const response = await fetch('/api/swipe/swipe');
+        const response = await fetch(`${process.env.API_BASE_URL}/swipe`);
         const imageData = await response.json();
+        console.log('image:', imageData[0].photo);
   
         // Assurez-vous que imageData contient l'URL de l'image
-        if (imageData && imageData.photo) {
-          swipableImage.src = imageData.photo;
+        if (imageData[0] && imageData[0].photo) {
+          swipableImage.src = imageData[0].photo;
   
           // Met à jour l'indicateur pour éviter d'autres requêtes
           isSwipeEnded = true;
         } else {
-          console.error('Invalid image data received:', imageData);
+          console.error('Invalid image data received:', imageData[0]);
         }
       } catch (error) {
         console.error('Error fetching image:', error);
