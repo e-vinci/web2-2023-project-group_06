@@ -3,6 +3,11 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { Pool } = require('pg');
+const jwt = require('jsonwebtoken');
+
+const jwtsecret = 'ilovebooks!';
+
+const lifetimeJwt = 24 * 60 * 60 * 1000;
 
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
 
@@ -21,7 +26,18 @@ const loginUser = (email) => new Promise((resolve, reject) => {
       reject(new Error('Database error'));
     } else {
       console.log('just do it');
-      resolve(res.rows);
+
+      const token = jwt.sign(
+        { res },
+        jwtsecret,
+        { expiresIn: lifetimeJwt },
+      );
+
+      const authenticatedUser = {
+        res,
+        token,
+      };
+      resolve(authenticatedUser.rows);
     }
   });
 });

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const { register, login } = require('../models/users');
 
 const { register } = require('../models/users');
 const { login } = require('../models/login');

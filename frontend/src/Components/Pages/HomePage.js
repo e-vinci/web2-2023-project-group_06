@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+// eslint-disable-next-line import/no-extraneous-dependencies, import/extensions
+import anime from 'animejs/lib/anime.es.js';
 import logoImage from '../../img/boonder_advanced_logo.png';
 // eslint-disable-next-line import/no-cycle
 import routes from '../Router/routes';
 import { usePathPrefix } from '../../utils/path-prefix'; // Adjust the path based on the actual location of your path-prefix file
-
+import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 
 const HomePage = () => {
   const main = document.querySelector('main');
@@ -17,12 +19,16 @@ const HomePage = () => {
   };
 
   main.innerHTML = `
+  <div id="privacyPolicyWrapper"></div>
     <div class="text-center">
       <h1 class="display-1">Welcome to </h1> 
       <h1 class="display-3">Boonder</h1> <br>
       <h2>The place to meet new books</h2> 
       <h3>Like Swipe Match</h3>
+
+      <div id="logoo">
       <img src="${logoImage}" alt="logo" class="image-fluid w-25" > 
+      </div>
       <br><br><br>
 
       <div class="mb-3">
@@ -44,6 +50,8 @@ const HomePage = () => {
     </div>
   `;
 
+  PrivacyPolicy();
+
   const loginButton = document.querySelector('[data-uri="/login"]');
   const signupButton = document.querySelector('[data-uri="/signup"]');
   const aboutButton = document.querySelector('[data-uri="/about"]');
@@ -61,6 +69,39 @@ const HomePage = () => {
   aboutButton.addEventListener('click', (event) => {
     event.preventDefault();
     handleNavigation('/about');
+  });
+
+  anime({
+    targets: '#logoo',
+    translateY: [
+      { value: 200, duration: 600 },
+      { value: 0, duration: 600 }
+    ],
+    scaleX: [
+      { value: 1.1, duration: 50, easing: 'easeOutExpo' },
+      { value: 1, duration: 50 },
+      { value: 1.1, duration: 50 },
+      { value: 1, duration: 50 }
+    ],
+    scaleY: [
+      { value: 1.1, duration: 50, easing: 'easeOutExpo' },
+      { value: 1, duration: 50 },
+      { value: 1.1, duration: 50 },
+      { value: 1, duration: 50 }
+    ],
+    easing: 'easeOutElastic(1, .8)',
+    loop: true
+  });
+
+  const logoo = document.querySelector('#logoo');
+  logoo.addEventListener('click', () => {
+    anime({
+      targets: logoo,
+      translateX: 250,
+      rotate: '20turn',
+      duration: 800,
+      easing: 'easeInOutSine'
+    });
   });
 };
 
