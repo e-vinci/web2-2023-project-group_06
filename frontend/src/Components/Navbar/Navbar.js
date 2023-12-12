@@ -94,6 +94,7 @@ if(user){
     event.preventDefault();
      console.log('déconnexion');
      localStorage.removeItem('user');
+     window.location.href = '/';
      Navbar();
    });
  }
