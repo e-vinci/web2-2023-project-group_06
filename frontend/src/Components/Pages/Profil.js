@@ -42,9 +42,9 @@ async function ProfilUser() {
     anime({
       targets: '.card',
       scale: [1, 1.05],
-      rotate: '1turn',
-      direction: 'alternate',
-      easing: 'easeInOutSine',
+      rotate: '50turn',
+      direction: 'normal',
+      easing: 'linear',
       duration: 2000
     });
 
