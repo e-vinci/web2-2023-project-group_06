@@ -48,7 +48,7 @@ const PrivacyPolicy = () => {
                 <p>By using our site, you consent to our privacy policy.</p>
             </div>
             <div class="modal-footer">
-                <button id = 'consentButton' type="button" class="btn btn-secondary" data-bs-dismiss="modal">I have read</button>
+                <button id = 'consentButton' type="button" class="btn btn-secondary" data-bs-dismiss="modal">I succumb 😰</button>
             </div>
         </div>
     </div>
