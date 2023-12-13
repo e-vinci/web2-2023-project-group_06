@@ -127,6 +127,20 @@
             `;
             
             main.innerHTML = mainfiller;
+
+            const form = document.getElementById('form');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent form submission for now
+
+                // Get all selected radio buttons
+                const selectedOptions = document.querySelectorAll('input[type="radio"]:checked');
+
+                // Create an array to store the choices
+                const choices = Array.from(selectedOptions).map(option => option.value);
+
+                // Call the function to count and compare
+                countAndCompare(choices);
+            });
         } else {
             const main = document.querySelector('main');
             main.innerHTML = `
@@ -136,4 +150,29 @@
         }
     }
     
-    export default Quizz;
+    // Function to count and compare
+    function countAndCompare(choices) {
+        let countPlus = 0;
+        let countMinus = 0;
+        let userType = "";
+
+        // Loop through choices and count "plus" and "minus"
+        for (const choice of choices) {
+            if (choice === 'plus') {
+                countPlus++;
+            } else if (choice === 'minus') {
+                countMinus++;
+            }
+        }
+
+        // Compare counts and perform actions accordingly
+        if (countPlus > countMinus) {
+            userType = "fluffly";
+        } else {
+            userType = "dark";
+        }
+
+        console.log(userType);
+    }
+
+export default Quizz;
