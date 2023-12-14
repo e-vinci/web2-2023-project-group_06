@@ -157,11 +157,12 @@
         let userType = "";
 
         // Loop through choices and count "plus" and "minus"
+        // eslint-disable-next-line no-restricted-syntax
         for (const choice of choices) {
             if (choice === 'plus') {
-                countPlus++;
+                countPlus += 1;
             } else if (choice === 'minus') {
-                countMinus++;
+                countMinus += 1;
             }
         }
 
