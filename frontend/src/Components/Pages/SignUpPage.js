@@ -148,7 +148,7 @@ const SignUpPage = () => {
       };
       const response = await fetch('/api/users/createUser', option);
 
-      if (!response.ok) {
+      if (!response.ok) {   
         const errorData = await response.json();
         if (errorData.error === 'Cet email est déjà assigné à un compte.') {
           const errorMessage = document.createElement('div');

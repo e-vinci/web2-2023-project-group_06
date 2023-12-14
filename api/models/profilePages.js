@@ -22,9 +22,8 @@ const updateProfile = async (userName, surname, profileDescription, profilePictu
     UPDATE project.users 
     (   name,
         surname,
-        profile_description,
-        profile_picture )
-        VALUES ($1, $2, $3, $4) 
+        profile_description )
+        VALUES ($1, $2, $3) 
                 `;
     const values = [userName, surname, profileDescription, profilePicture];
 
