@@ -168,7 +168,7 @@
 
         // Compare counts and perform actions accordingly
         if (countPlus > countMinus) {
-            userType = "fluffly";
+            userType = "fluffy";
         } else {
             userType = "dark";
         }
