@@ -78,7 +78,9 @@ if(user){
             ${user ? `
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <button class="btn btn-primary myButton">log out ヾ(￣▽￣)Bye~Bye~</button>
+                <button class="btn btn-primary myButton" style="font-size:20px; padding:10px 20px; border-radius:12px; background-color: #007bff; border-color: #007bff; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                  log out ヾ(￣▽￣)Bye~Bye~
+                </button>
               </li>
             </ul>` : ''}
           </ul>

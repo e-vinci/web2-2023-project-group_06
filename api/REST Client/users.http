@@ -4,7 +4,9 @@ POST {{baseUrl}}/users/createUser
 Content-Type: application/json
 
 {
-    "login": "kortgdfgdfe@gmail.com",
-    "password": "Qsdfg123"
+    "login": "kdfe@gmail.com",
+    "password": "Qsdfg123sfdsgdsgdsdgdsg",
+    "name" : "Rigaud",
+    "surname" : "René"
 }
 
