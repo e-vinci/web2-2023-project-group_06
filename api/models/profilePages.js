@@ -15,17 +15,18 @@ const pool = new Pool({
   port: '5432',
 });
 
-const updateProfile = async (userName, surname, profileDescription, profilePicture) => {
+const updateProfile = async (userName, surname, profileDescription, id) => {
+  console.log(userName, surname, profileDescription, id);
   try {
     // Continue la création de l'utilisateur s'il n'existe pas
     const query = `
-    UPDATE project.users 
-    (   name,
-        surname,
-        profile_description )
-        VALUES ($1, $2, $3) 
-                `;
-    const values = [userName, surname, profileDescription, profilePicture];
+    UPDATE project.users
+    SET 
+    name = $1,
+    surname = $2,
+    profile_description = $3
+    WHERE id_user = $4`;
+    const values = [userName, surname, profileDescription, id];
 
     const result = await pool.query(query, values);
     return result.rows[0];
