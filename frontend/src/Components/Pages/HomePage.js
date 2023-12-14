@@ -104,21 +104,21 @@ const HomePage = () => {
   anime({
     targets: '#logoo',
     translateX: [
-      { value: -200, duration: 600 },
-      { value: 200, duration: 600 },
-      { value: 0, duration: 600 }
+      { value: -200, duration: 1200 },
+      { value: 200, duration: 1200 },
+      { value: 0, duration: 1200 }
     ],
     scaleX: [
-      { value: 1.1, duration: 50, easing: 'easeOutExpo' },
-      { value: 1, duration: 50 },
-      { value: 1.1, duration: 50 },
-      { value: 1, duration: 50 }
+      { value: 1.1, duration: 200, easing: 'easeOutExpo' },
+      { value: 1, duration: 200 },
+      { value: 1.1, duration: 200 },
+      { value: 1, duration: 200 }
     ],
     scaleY: [
-      { value: 1.1, duration: 50, easing: 'easeOutExpo' },
-      { value: 1, duration: 50 },
-      { value: 1.1, duration: 50 },
-      { value: 1, duration: 50 }
+      { value: 1.1, duration: 200, easing: 'easeOutExpo' },
+      { value: 1, duration: 200 },
+      { value: 1.1, duration: 200 },
+      { value: 1, duration: 200 }
     ],
     easing: 'easeOutElastic(1, .8)',
     loop: true
