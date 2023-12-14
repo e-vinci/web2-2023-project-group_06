@@ -1,8 +1,11 @@
 const pg = require('pg');
 
 const { Pool } = pg;
+const jwt = require('jsonwebtoken');
 
-// to secure the password
+const jwtsecret = 'ilovebooks!';
+const lifetimeJwt = 24 * 60 * 60 * 1000;
+
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
 
 const pool = new Pool({
@@ -16,24 +19,33 @@ const pool = new Pool({
 const existingUser = (email) => new Promise((resolve, reject) => {
   pool.query('SELECT * FROM project.users WHERE login = $1', [email], (err, res) => {
     if (err) {
-      console.log(err.message);
+      console.error(err.message);
       reject(err);
     } else {
       console.log('just do it');
-      resolve(res.rows);
+      const token = jwt.sign(
+        { res },
+        jwtsecret,
+        { expiresIn: lifetimeJwt },
+      );
+
+      const authenticatedUser = {
+        res,
+        token,
+      };
+
+      resolve(authenticatedUser.res.rows);
     }
   });
 });
 
-const createUser = async (login, password) => {
+const createUser = async (login, password, name, surname) => {
   try {
-    // Vérifie si l'utilisateur existe déjà
     const userExists = await existingUser(login);
     if (userExists.length > 0) {
       throw new Error('Cet email est déjà assigné à un compte.');
     }
 
-    // Continue la création de l'utilisateur s'il n'existe pas
     const query = `
       INSERT INTO project.users (
         name,
@@ -45,9 +57,9 @@ const createUser = async (login, password) => {
         quizz_score,
         profile_picture
       )
-      VALUES ('', '', '', $1, $2, NULL, 0, '') RETURNING password, login
+      VALUES ($3, $4, '', $1, $2, NULL, 0, '') RETURNING password, login,name, surname
     `;
-    const values = [password, login];
+    const values = [password, login, name, surname];
 
     const result = await pool.query(query, values);
     return result.rows[0];
