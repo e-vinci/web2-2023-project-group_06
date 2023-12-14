@@ -157,10 +157,13 @@
         let userType = "";
 
         // Loop through choices and count "plus" and "minus"
+        // eslint-disable-next-line no-restricted-syntax
         for (const choice of choices) {
             if (choice === 'plus') {
+                // eslint-disable-next-line no-plusplus
                 countPlus++;
             } else if (choice === 'minus') {
+                // eslint-disable-next-line no-plusplus
                 countMinus++;
             }
         }
