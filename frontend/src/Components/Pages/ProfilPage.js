@@ -37,13 +37,13 @@ const ProfilPage = () => {
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label>Full name</label>
-                                                            <input class="form-control" type="text" name="name" placeholder="John Doe" value="John Doe">
+                                                            <input class="form-control" type="text" name="name" placeholder="John Doe">
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label>Username</label>
-                                                            <input class="form-control" type="text" name="username" placeholder="johndoe" value="johndoe">
+                                                            <input class="form-control" type="text" name="username" placeholder="johndoe">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -73,6 +73,24 @@ const ProfilPage = () => {
     </div>
     `
     main.innerHTML = mainfiller;
+/*
+    const username = document.getElementById('email');
+    const login = loginInput.value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    try{
+        const option = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ login, password }),
+          };
+        const response = await fetch(`${process.env.API_BASE_URL}/profilePage`, option);
+    } catch{
+
+    } */
     } else {
         const main = document.querySelector('main');
         main.innerHTML = `

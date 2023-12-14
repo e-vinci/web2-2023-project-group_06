@@ -17,6 +17,7 @@ const booksRouter = require('./routes/books');
 const listUsersRoute = require('./routes/listUsers');
 const loginRoute = require('./routes/login');
 const swipeRoute = require('./routes/swipes');
+const profilePageRoute = require('./routes/profilePage');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/books', cors(corsOptions), booksRouter);
 app.use('/listUsers', cors(corsOptions), listUsersRoute);
 app.use('/login', loginRoute);
 app.use('/swipe', swipeRoute);
+app.use('/profilePage', profilePageRoute);
 
 // Indique à Express de servir les fichiers statiques du répertoire 'public'
 app.use('/public', express.static(path.join(__dirname, 'public')));
