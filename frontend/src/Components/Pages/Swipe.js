@@ -67,13 +67,13 @@ const Swipe = () => {
         const imageData = await response.json();
   
         // Assurez-vous que imageData contient l'URL de l'image
-        if (imageData[0] && imageData[0].photo) {
-          swipableImage.src = imageData[0].photo;
+        if (imageData) {
+          swipableImage.src = imageData;
   
           // Met à jour l'indicateur pour éviter d'autres requêtes
           isSwipeEnded = true;
         } else {
-          console.error('Invalid image data received:', imageData[0]);
+          console.error('Invalid image data received:', imageData);
         }
       } catch (error) {
         console.error('Error fetching image:', error);

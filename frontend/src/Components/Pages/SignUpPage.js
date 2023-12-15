@@ -146,7 +146,7 @@ const SignUpPage = () => {
         },
         body: JSON.stringify({ login, password, name, surname }),
       };
-      const response = await fetch('/api/users/createUser', option);
+      const response = await fetch(`${process.env.API_BASE_URL}/users/createUser`, option);
 
       if (!response.ok) {   
         const errorData = await response.json();
