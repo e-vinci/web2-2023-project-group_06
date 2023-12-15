@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const express = require('express');
 
-const quizzActions = require('../models/quizz');
+// const quizzActions = require('../models/quizz');
 
 const router = express.Router();
 

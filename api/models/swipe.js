@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-// eslint-disable-next-line import/no-extraneous-dependencies
 
 const { Pool } = require('pg');
 
@@ -24,4 +23,16 @@ const getImage = async (number) => {
   }
 };
 
-module.exports = { getImage };
+const match = async (user, book) => {
+  try {
+    const query = 'INSERT INTO project.matches ("user", book) VALUES ($1, $2)';
+    const values = [user, book];
+    const res = await pool.query(query, values);
+    return res.rows;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+module.exports = { getImage, match };
