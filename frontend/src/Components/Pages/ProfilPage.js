@@ -93,8 +93,17 @@ const ProfilPage = () => {
                     body: JSON.stringify({ userName, surname, profileDescription, id }),
                 };
                 await fetch(`${process.env.API_BASE_URL}/profilePage`, options);
-                // je sais pas comment changer le localstorage
-                /* localStorage.setItem('user', options); */
+                if (userName !== null && userName !== undefined && userName !== '') {
+                    user[0].name = userName;
+                  }
+                if (surname !== null && surname !== undefined && surname !== '') {
+                    user[0].surname = surname;
+                }
+                if (profileDescription !== null && profileDescription !== undefined && profileDescription !== '') {
+                    user[0].profile_description = profileDescription;
+                }
+                localStorage.setItem('user', JSON.stringify(user));
+                window.location.href = '/profiluser';
             } catch (error) {
                 console.error('Error modifying user:', error);
                 // Handle error here 
