@@ -79,9 +79,10 @@ const ProfilPage = () => {
 
         const profileModification = async (event) => {
             event.preventDefault();
-            const username = document.getElementsByName('name')[0].value;
+            const userName = document.getElementsByName('name')[0].value;
             const surname = document.getElementsByName('surname')[0].value;
-            const description = document.getElementById('description').value;
+            const profileDescription = document.getElementById('description').value;
+            const id = user[0].id_user;
 
             try {
                 const options = {
@@ -89,10 +90,11 @@ const ProfilPage = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ username, surname, description }),
+                    body: JSON.stringify({ userName, surname, profileDescription, id }),
                 };
                 await fetch(`${process.env.API_BASE_URL}/profilePage`, options);
-
+                // je sais pas comment changer le localstorage
+                /* localStorage.setItem('user', options); */
             } catch (error) {
                 console.error('Error modifying user:', error);
                 // Handle error here 

@@ -8,7 +8,9 @@ const jwtSecret = 'jwtSecret!';
 const router = express.Router();
 
 router.post('/createUser', async (req, res) => {
-  const { login, password, name, surname } = req.body;
+  const {
+    login, password, name, surname,
+  } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
