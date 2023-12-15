@@ -4,7 +4,7 @@ const ListUsers = () => {
     if (user) {
         const main = document.querySelector('main');
 
-    fetch('/api/listUsers')
+    fetch(`${process.env.API_BASE_URL}/listUsers`)
     .then((response) => {
         if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
         return response.json();
