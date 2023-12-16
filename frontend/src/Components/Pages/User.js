@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const ListUsers = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
+    if (!user) {
         const main = document.querySelector('main');
 
     fetch(`${process.env.API_BASE_URL}/listUsers`)

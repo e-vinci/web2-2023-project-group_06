@@ -6,7 +6,7 @@ import logoImage from '../../img/boonder_advanced_logo.png';
 
 const Swipe = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if (user) {
+  if (!user) {
       const main = document.querySelector('main');
   const mainfiller = `
     <h1> Liste des livres proposés par la communauté </h1>

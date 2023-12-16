@@ -1,6 +1,6 @@
 async function bookDetails(id){
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
+    if (!user) {
         console.log(`before : ${id}`);
         // Faites une requête à l'API pour obtenir les détails du livre
         try {

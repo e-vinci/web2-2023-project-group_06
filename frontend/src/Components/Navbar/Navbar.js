@@ -42,7 +42,7 @@ if(user){
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              ${user ? ` 
+              ${!user ? ` 
                 <li class="nav-item">
                   <a class="nav-link" href="#" data-uri="/profil">Profile</a>
                 </li>
@@ -59,7 +59,7 @@ if(user){
                   <a class="nav-link" href="#" data-uri="/swipe"> swipe (Alpha testing in progress)</a>
                 </li>
               </li>` : ''}
-              ${admin ? `<li class="nav-item">
+              ${!admin ? `<li class="nav-item">
                 <li class ="nav-item">
                   <a class="nav-link" href="#" data-uri="/listUsers"> listUsers</a>
                 </li>
@@ -67,7 +67,7 @@ if(user){
                   <a class="nav-link" href="#" data-uri="/books"> Liste des livres crée par défaut (BETA)</a>
                 </li>
               </li>` : ''}
-            ${user && !admin ? `<li class="nav-item">
+            ${!user && !admin ? `<li class="nav-item">
               <li class ="nav-item">
                 <a class="nav-link" href="#" data-uri="/profiluser"> User Profil</a>
               </li>
