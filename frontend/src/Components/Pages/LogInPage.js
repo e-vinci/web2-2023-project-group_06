@@ -22,8 +22,7 @@ const LogInPage = () => {
     const form = document.getElementById('loginForm');
 
     try {
-      const response = await fetch('/api/login', {
-     // const response = await fetch(`${process.env.API_BASE_URL}/login`, {
+        const response = await fetch(`${process.env.API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

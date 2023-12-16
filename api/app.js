@@ -17,8 +17,11 @@ const loginRoute = require('./routes/login');
 const swipeRoute = require('./routes/swipes');
 const profilePageRoute = require('./routes/profilePage');
 const quizzesPageRoute = require('./routes/quizzes');
+const uploadProfilePicture = require('./routes/uploadProfilePicture');
 
 const app = express();
+
+app.use('/public', express.static('public'));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -36,5 +39,6 @@ app.use('/login', loginRoute);
 app.use('/swipe', swipeRoute);
 app.use('/profilePage', profilePageRoute);
 app.use('/quizz', quizzesPageRoute);
+app.use('/uploadProfilePicture', uploadProfilePicture);
 
 module.exports = app;

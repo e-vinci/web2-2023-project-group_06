@@ -67,7 +67,7 @@ const Swipe = () => {
         const imageData = await response.json();
         // imageData contient l'URL de l'image
         if (imageData) {
-          swipableImage.src = imageData;
+          swipableImage.src = imageData.photo;
           console.log('Image????????', imageData);
           console.log(currentX);
           console.log(user[0].category);
