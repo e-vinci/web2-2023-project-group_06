@@ -37,14 +37,16 @@ const LogInPage = () => {
         throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
       }
 
-      const { userFound, hashedPassword, error, field } = await response.json();
+      const { token, userFound, hashedPassword, error, field } = await response.json();
 
       if (userFound && userFound.length > 0) {
         console.log('Login successful:', userFound);
         console.log('Hashed Password:', hashedPassword);
+        console.log('LogInPage token:', token);
 
         // AJOUTER DANS LOCALSTORAGE (chuqi)
         localStorage.setItem('user', JSON.stringify(userFound));
+        localStorage.setItem('token', JSON.stringify(token));
 
         // Redirect to the home page
         console.log('REDIRECT TO / HOMEPAGE ?');
@@ -121,3 +123,4 @@ const LogInPage = () => {
 
 export default LogInPage;
 
+// pour Chuqi
