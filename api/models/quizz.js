@@ -16,7 +16,7 @@ const pool = new Pool({
 
 const setUserType = async (type, id) => {
   try {
-    const res = await pool.query('UPDATE projet.users SET user_type = $1 WHERE id_user = $2;', [type, id]);
+    const res = await pool.query('UPDATE project.users SET category = $1 WHERE id_user = $2;', [type, id]);
     return res;
   } catch (err) {
     console.log(err.message);
