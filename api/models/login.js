@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const jwtsecret = 'ilovebooks!';
 
 // const lifetimeJwt = 24 * 60 * 60 * 1000;
-const lifetimeJwt = 60 * 10;
+const lifetimeJwt = 24 * 60 * 60 * 1000;
 
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
 
@@ -46,3 +46,4 @@ const loginUser = (email) => new Promise((resolve, reject) => {
 });
 
 module.exports = { loginUser };
+// pour chuqi
