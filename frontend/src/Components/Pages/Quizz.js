@@ -129,7 +129,7 @@
             main.innerHTML = mainfiller;
 
             const form = document.getElementById('form');
-            form.addEventListener('submit', (event) => {
+            form.addEventListener('submit', async (event) => {
                 event.preventDefault(); // Prevent form submission for now
 
                 // Get all selected radio buttons
@@ -138,8 +138,26 @@
                 // Create an array to store the choices
                 const choices = Array.from(selectedOptions).map(option => option.value);
 
-                // Call the function to count and compare
-                countAndCompare(choices);
+                // Call the function to count and compare and saves the result
+                const userType = countAndCompare(choices);
+
+                const userId = user[0].id_user;
+
+                try {
+                    const options = {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ userType, userId }),
+                    };
+
+                    await fetch(`${process.env.API_BASE_URL}/quizz`, options);
+
+                    window.location.href = '/profilePage';
+                } catch (error) {
+                    console.error('Error processing the quizz result :', error); 
+                }
             });
         } else {
             const main = document.querySelector('main');
@@ -174,6 +192,7 @@
         }
 
         console.log(userType);
+        return userType; 
     }
 
 export default Quizz;

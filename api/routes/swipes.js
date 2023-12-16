@@ -8,19 +8,21 @@ router.get('/', async (req, res) => {
   const number = Math.round(Math.random() * 61);
 
   try {
-    let swipeBook = await getImage(number);
+    const swipeBookData = await getImage(number);
     console.log('vous êtes ici authorize : ');
-    swipeBook = swipeBook[0].photo.replace('api/', '');
-    swipeBook = `https://boonder.azurewebsites.net/${swipeBook}`;
+    const swipeBook = {
+      photo: `https://boonder.azurewebsites.net/${swipeBookData[0].photo.replace('api/', '')}`,
+      scoreFluffiness: swipeBookData[0].score_fluffiness,
+      scoreDarkness: swipeBookData[0].score_darkness,
+    };
     return res.json(swipeBook);
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
 });
 
-router.post('/:user/:book', async (req, res) => {
-  const { user } = req.params;
-  const { book } = req.params;
+router.post('/', async (req, res) => {
+  const { user, book } = req.body;
   try {
     const matchBook = await match(user, book);
     console.log('vous êtes ici : ');

@@ -16,6 +16,7 @@ const listUsersRoute = require('./routes/listUsers');
 const loginRoute = require('./routes/login');
 const swipeRoute = require('./routes/swipes');
 const profilePageRoute = require('./routes/profilePage');
+const quizzesPageRoute = require('./routes/quizzes');
 
 const app = express();
 
@@ -34,5 +35,6 @@ app.use('/listUsers', cors(corsOptions), listUsersRoute);
 app.use('/login', loginRoute);
 app.use('/swipe', swipeRoute);
 app.use('/profilePage', profilePageRoute);
+app.use('/quizz', quizzesPageRoute);
 
 module.exports = app;

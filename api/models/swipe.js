@@ -15,7 +15,7 @@ const pool = new Pool({
 
 const getImage = async (number) => {
   try {
-    const res = await pool.query('SELECT photo FROM project.books WHERE id_book = $1', [number]);
+    const res = await pool.query('SELECT photo, score_fluffiness, score_darkness FROM project.books WHERE id_book = $1', [number]);
     return res.rows;
   } catch (err) {
     console.log(err.message);

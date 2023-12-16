@@ -1,12 +1,14 @@
 @baseUrl = http://localhost:3000
 
+### getImage
 GET {{baseUrl}}/swipe
 Content-Type: application/json
 
+### match
 POST {{baseUrl}}/swipe
 Content-Type: application/json
 
 {
     "user": 1,
-    "book": 2
+    "book": 1
 }
