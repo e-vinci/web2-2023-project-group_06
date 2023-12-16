@@ -1,16 +1,16 @@
-    const Quizz = () => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            const main = document.querySelector('main');
-            const mainfiller = `
-            <header>
-                <h1>It's quizz time !!!</h1>
-            </header>
-    
-            <section id="questions">
-                <h2>Quizz</h2>
-                <form id="form">
-                    <label>Question 1 : Would you rather have a dragon or be a dragon ?</label><br>
+const Quizz = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+        const main = document.querySelector('main');
+        const mainfiller = `
+        <header>
+            <h1>It's quizz time !!!</h1>
+        </header>
+
+        <section id="questions">
+            <h2>Quizz</h2>
+            <form id="form">
+                <label>Question 1 : Would you rather have a dragon or be a dragon ?</label><br>
                     <input type="radio" value="plus" name="one">Have a dragon <br>
                     <input type="radio" value="minus" name="one">Be a dragon <br><br>
     
@@ -119,80 +119,80 @@
                     <input type="radio" value="minus" name="twenty-one"> Doctor House <br>
                     <input type="radio" value="minus" name="twenty-one">Doctor Jekyll <br>
                     <input type="radio" value="plus" name="twenty-one">Mona's father (he is a surgeon) <br><br>
-    
-                    <input type="submit" value="Submit">    
-                </form>
-            </section>
-    
-            `;
-            
-            main.innerHTML = mainfiller;
+                <input type="submit" value="Submit">    
+            </form>
+        </section>
+        `;
 
-            const form = document.getElementById('form');
-            form.addEventListener('submit', async (event) => {
-                event.preventDefault(); // Prevent form submission for now
+        main.innerHTML = mainfiller;
 
-                // Get all selected radio buttons
-                const selectedOptions = document.querySelectorAll('input[type="radio"]:checked');
-
-                // Create an array to store the choices
-                const choices = Array.from(selectedOptions).map(option => option.value);
-
-                // Call the function to count and compare and saves the result
-                const userType = countAndCompare(choices);
-
-                const userId = user[0].id_user;
-
-                try {
-                    const options = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ userType, userId }),
-                    };
-
-                    await fetch(`${process.env.API_BASE_URL}/quizz`, options);
-
-                    window.location.href = '/profilePage';
-                } catch (error) {
-                    console.error('Error processing the quizz result :', error); 
-                }
-            });
-        } else {
-            const main = document.querySelector('main');
-            main.innerHTML = `
-                    <h1>You are not supposed to be here</h1>
-                    `;
-            console.log('user not connected ?');
-        }
-    }
-    
-    // Function to count and compare
-    function countAndCompare(choices) {
-        let countPlus = 0;
-        let countMinus = 0;
-        let userType = "";
-
-        // Loop through choices and count "plus" and "minus"
-        // eslint-disable-next-line no-restricted-syntax
-        for (const choice of choices) {
-            if (choice === 'plus') {
-                countPlus += 1;
-            } else if (choice === 'minus') {
-                countMinus += 1;
+        const handleSubmit = async (event) => {
+            event.preventDefault();
+            const selectedOptions = document.querySelectorAll('input[type="radio"]:checked');
+            const choices = Array.from(selectedOptions).map(option => option.value);
+            // eslint-disable-next-line camelcase
+            const user_type = countAndCompare(choices);
+            // eslint-disable-next-line camelcase
+            const user_id = user[0].id_user;
+        
+            console.log('User Type:', user_type); // Vérifie la valeur de userType
+        
+            try {
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // eslint-disable-next-line camelcase
+                    body: JSON.stringify({ user_type, user_id }),
+                };
+                console.log('Option : ', options);
+        
+                console.log('Before Fetch - User Type:', user_type); // Vérifie la valeur de userType avant la requête
+        
+                await fetch(`${process.env.API_BASE_URL}/quizz`, options);
+        
+                console.log('After Fetch - User Type:', user_type); // Vérifie la valeur de userType après la requête
+        
+                window.location.href = '/profiluser';
+            } catch (error) {
+                console.error('Error processing the quizz result:', error);
             }
-        }
+        };
 
-        // Compare counts and perform actions accordingly
-        if (countPlus > countMinus) {
-            userType = "fluffy";
-        } else {
-            userType = "dark";
-        }
-
-        console.log(userType);
-        return userType; 
+        const form = document.getElementById('form');
+        form.addEventListener('submit', handleSubmit);
+    } else {
+        const main = document.querySelector('main');
+        main.innerHTML = `
+            <h1>You are not supposed to be here</h1>
+        `;
+        console.log('user not connected?');
     }
+};
+
+function countAndCompare(choices) {
+    let countPlus = 0;
+    let countMinus = 0;
+    let userType = "";
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const choice of choices) {
+        if (choice === 'plus') {
+            countPlus += 1;
+        } else if (choice === 'minus') {
+            countMinus += 1;
+        }
+    }
+
+    if (countPlus > countMinus) {
+        userType = "fluffy";
+    } else {
+        userType = "dark";
+    }
+
+    console.log(userType);
+    return userType;
+}
 
 export default Quizz;
