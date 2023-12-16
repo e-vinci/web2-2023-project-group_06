@@ -54,9 +54,9 @@ const Swipe = () => {
     isSwipeEnded = false;
   }
 
-  async function handleMouseUp() {
+  async function handleMouseUp(event) {
     isMouseDown = false;
-    startX = null;
+    const currentX = startX - event.clientX;
   
     swipableImage.style.transform = 'translateX(0)';
   
@@ -68,8 +68,68 @@ const Swipe = () => {
         // imageData contient l'URL de l'image
         if (imageData) {
           swipableImage.src = imageData;
-          console.log(imageData[0]);
+          console.log('Image????????', imageData);
+          console.log(currentX);
+          console.log(user[0].category);
+          console.log(imageData.scoreFluffiness);
+         if(currentX < -50){
+            if(user[0].category === 'fluffy'){
+            const fluffy  = imageData.scoreFluffiness;
+              if(fluffy < user[0].quizz_score){
+                const userID = user[0].id_user;
+                const book = imageData.id_book;
+                try {
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ userID, book}),
+                };
+                console.log(options);
+                await fetch(`${process.env.API_BASE_URL}/swipe`, options);
+                
+                } catch (error) {
+                    console.error('Error modifying user:', error);
+                    // Handle error here 
+                } 
+              }else{
+                return;
+              }
+            }else{
+              const dark  = imageData.scoreDarkness;
+              if(dark < user[0].quizz_score){
+                const userID = user[0].id_user;
+                const book = imageData.id_book;
+                try {
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ userID, book}),
+                };
+                
+                console.log(options.body);
+                await fetch(`${process.env.API_BASE_URL}/swipe`, options);
+
+                if (!response.ok) {
+                  // Si la réponse n'est pas réussie (code HTTP différent de 200)
+                  console.error('Error modifying user. Status:', response.status);
+                  // Handle error here
+              }
+                
+                } catch (error) {
+                    console.error('Error modifying user:', error);
+                    // Handle error here 
+                } 
+              }else{
+                return;
+              }
+          } 
+        }
           // Met à jour l'indicateur pour éviter d'autres requêtes
+
           isSwipeEnded = true;
         } else {
           console.error('Invalid image data received:', imageData);
@@ -77,7 +137,7 @@ const Swipe = () => {
       } catch (error) {
         console.error('Error fetching image:', error);
       }
-    }
+    } 
   }
   } else {
       const main = document.querySelector('main');

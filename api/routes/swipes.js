@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
       photo: `https://boonder.azurewebsites.net/${swipeBookData[0].photo.replace('api/', '')}`,
       scoreFluffiness: swipeBookData[0].score_fluffiness,
       scoreDarkness: swipeBookData[0].score_darkness,
+      id_book: swipeBookData[0].id_book,
     };
     return res.json(swipeBook);
   } catch (err) {
@@ -22,9 +23,9 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { user, book } = req.body;
+  const { userID, book } = req.body;
   try {
-    const matchBook = await match(user, book);
+    const matchBook = await match(userID, book);
     console.log('vous êtes ici : ');
     return res.json(matchBook);
   } catch (err) {

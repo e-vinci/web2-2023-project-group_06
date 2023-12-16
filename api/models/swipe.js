@@ -15,7 +15,7 @@ const pool = new Pool({
 
 const getImage = async (number) => {
   try {
-    const res = await pool.query('SELECT photo, score_fluffiness, score_darkness FROM project.books WHERE id_book = $1', [number]);
+    const res = await pool.query('SELECT photo, score_fluffiness, score_darkness, id_book FROM project.books WHERE id_book = $1', [number]);
     return res.rows;
   } catch (err) {
     console.log(err.message);
@@ -23,10 +23,10 @@ const getImage = async (number) => {
   }
 };
 
-const match = async (user, book) => {
+const match = async (userID, book) => {
   try {
     const query = 'INSERT INTO project.matches ("user", book) VALUES ($1, $2)';
-    const values = [user, book];
+    const values = [userID, book];
     const res = await pool.query(query, values);
     return res.rows;
   } catch (err) {
