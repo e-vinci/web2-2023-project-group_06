@@ -102,7 +102,7 @@ const HomePage = () => {
   
 
   anime({
-    targets: '#logoo',
+    // targets: '#logoo',
     translateX: [
       { value: -200, duration: 1200 },
       { value: 200, duration: 1200 },
@@ -129,7 +129,6 @@ const HomePage = () => {
   logoo.addEventListener('click', () => {
     anime({
       targets: logoo,
-      translateX: 250,
       rotate: '20turn',
       duration: 800,
       easing: 'easeInOutSine'

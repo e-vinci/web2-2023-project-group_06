@@ -4,9 +4,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const jwtsecret = 'ilovebooks!';
-
 const lifetimeJwt = 24 * 60 * 60 * 1000;
 
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
@@ -19,29 +19,48 @@ const pool = new Pool({
   port: '5432',
 });
 
-const loginUser = (email) => new Promise((resolve, reject) => {
-  pool.query('SELECT * FROM project.users WHERE login = $1', [email], (err, res) => {
-    if (err) {
-      console.error(err.message);
-      reject(new Error('Database error'));
-    } else {
-      console.log('just do it');
+async function login(email, password) {
+  const userFound = await readOneUserFromUsername(email);
 
-      const token = jwt.sign(
-        { res },
-        jwtsecret,
-        { expiresIn: lifetimeJwt },
-      );
+  console.log(`models/login userFound${userFound}`); // casse ICI
+  if (!userFound) return undefined;
 
-      const authenticatedUser = {
-        res,
-        token,
-      };
+  console.log(`models password : ${password} userFound.password : ${userFound.password}`);
 
-      // bonne affichage des contextes : authenticatedUser.res.rows au lieu de authenticatedUser (chuqi)
-      resolve(authenticatedUser.res.rows);
-    }
-  });
-});
+  // Compare hashed password using bcrypt
+  const passwordMatch = await bcrypt.compare(password, userFound.password);
 
-module.exports = { loginUser };
+  if (!passwordMatch) return undefined;
+
+  const token = jwt.sign(
+    { email },
+    jwtsecret,
+    { expiresIn: lifetimeJwt },
+  );
+
+  const authenticatedUser = {
+    email,
+    token,
+  };
+
+  return authenticatedUser;
+}
+
+async function readOneUserFromUsername(email) {
+  try {
+    const result = await pool.query('SELECT * FROM project.users WHERE login = $1', [email]);
+
+    console.log('models Users found:', result.rows);
+
+    // Assuming result.rows is an array of users
+    const userFound = result.rows.find((user) => user.login === email); // c est casse ici
+
+    console.log(`models USERFOUND ${userFound}`);
+    return userFound;
+  } catch (error) {
+    console.error('models Error reading user:', error);
+    return undefined;
+  }
+}
+
+module.exports = { login, readOneUserFromUsername };

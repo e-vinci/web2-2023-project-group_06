@@ -6,7 +6,7 @@
     "deploy": "npm run build && gh-pages -d dist",
     "dev": "webpack --mode development --config webpack.config.base.js && cp dist/index.html dist/404.html",
     "build": "webpack --mode production --config webpack.config.prod.js && cp dist/index.html dist/404.html",
-    "start": "webpack serve --mode production --config webpack.config.base.js",
+    "start": "webpack serve --mode development --config webpack.config.base.js",
     "lint": "eslint **/*.js",
     "lint:fix": "npm run lint -- --fix"
   },

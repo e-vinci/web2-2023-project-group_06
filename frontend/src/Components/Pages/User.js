@@ -26,7 +26,7 @@ const ListUsers = () => {
         `).join('');
 
         main.innerHTML = `
-        <h1> ICI </h1>
+        <h1> Can be deleted </h1>
         <table class="table">
             <thead class="thead-dark">
                 <tr>

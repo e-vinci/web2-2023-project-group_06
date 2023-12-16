@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 // const { readOneUserFromUsername } = require('../models/users');
 const { login } = require('../models/login');
 
-const jwtSecret = 'jwtSecret!';
+const jwtSecret = 'ilovebooks!';
 
 const authorize = (req, res, next) => {
   const token = req.get('authorization');

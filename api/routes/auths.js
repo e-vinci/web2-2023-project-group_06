@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const { register, login } = require('../models/users');
 
 const router = express.Router();
-const jwtSecret = 'jwtSecret!'; // Changez ceci pour votre propre clé secrète
+const jwtSecret = 'ilovebooks!'; // Changez ceci pour votre propre clé secrète
 const lifetimeJwt = 24 * 60 * 60; // en secondes : 24 * 60 * 60 = 24h
 
 /* Register a user */

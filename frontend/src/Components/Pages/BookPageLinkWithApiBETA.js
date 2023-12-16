@@ -6,12 +6,6 @@ const ListBooks = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
         const main = document.querySelector('main');
-        // CSS
-        main.style.display = 'flex';
-        main.style.justifyContent = 'center';
-        main.style.fontSize = '1em';
-        main.style.width = '100vw';
-        main.style.overflowX = 'hidden';
      
         const response = await fetch(`${process.env.API_BASE_URL}/books`);
         if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
