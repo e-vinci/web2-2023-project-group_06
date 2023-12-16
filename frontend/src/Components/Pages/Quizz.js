@@ -152,7 +152,7 @@
                         body: JSON.stringify({ userType, userId }),
                     };
 
-                    await fetch(`${process.env.API_BASE_URL}/quizzes`, options);
+                    await fetch(`${process.env.API_BASE_URL}/quizz`, options);
 
                     window.location.href = '/profilePage';
                 } catch (error) {
