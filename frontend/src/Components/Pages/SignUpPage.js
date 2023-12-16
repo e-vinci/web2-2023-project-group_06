@@ -107,7 +107,7 @@ const SignUpPage = () => {
     if (!emailRegex.test(login)) {
       const errorMessage = document.createElement('div');
       errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
-      errorMessage.textContent = 'Le login doit être un email valide !';
+      errorMessage.textContent = 'Make sure the login is in the format of a valid email address!';
       form.appendChild(errorMessage);
       return;
     }
@@ -116,23 +116,22 @@ const SignUpPage = () => {
       const errorMessage = document.createElement('div');
       errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
       errorMessage.textContent =
-        'La saisie du mot de passe et sa confirmation ne correspondent pas !';
+        'Password entry and confirmation do not match!';
       form.appendChild(errorMessage);
       return;
     }
 
     if (!login || !password) {
-      console.error("L'email et mot de passe sont requis !");
+      console.error("Email and password are required !");
       return;
     }
 
-    // Vérifier les critères du mot de passe
     const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
     if (!passwordRegex.test(password)) {
       const errorMessage = document.createElement('div');
       errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
       errorMessage.textContent =
-        'Votre mot de passe doit avoir au moins 8 caractères avec au minimum 1 majuscule et 1 chiffre.';
+        'Your password must be at least 8 characters long, with at least 1 capital letter and 1 number.';
       form.appendChild(errorMessage);
       return;
     }
@@ -148,17 +147,15 @@ const SignUpPage = () => {
       };
       const response = await fetch(`${process.env.API_BASE_URL}/users/createUser`, option);
 
-      if (!response.ok) {   
+      if (!response.ok) {
         const errorData = await response.json();
-        if (errorData.error === 'Cet email est déjà assigné à un compte.') {
+        if (errorData.error === 'This email has already been assigned to an account.') {
           const errorMessage = document.createElement('div');
           errorMessage.classList.add('alert', 'alert-danger');
           errorMessage.textContent = errorData.error;
 
-          // Efface le contenu précédent
           errorContainer.innerHTML = '';
 
-          // Ajoute le message d'erreur dans le conteneur dédié
           errorContainer.appendChild(errorMessage);
         }
         throw new Error('Failed to create user');
@@ -167,7 +164,6 @@ const SignUpPage = () => {
       window.location.href = '/login';
     } catch (error) {
       console.error('Error creating user:', error);
-      // Handle error here
     }
   };
 
