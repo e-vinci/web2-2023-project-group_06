@@ -65,10 +65,10 @@ const Swipe = () => {
       try {
         const response = await fetch(`${process.env.API_BASE_URL}/swipe`);
         const imageData = await response.json();
-        // Assurez-vous que imageData contient l'URL de l'image
+        // imageData contient l'URL de l'image
         if (imageData) {
           swipableImage.src = imageData;
-  
+          console.log(imageData[0]);
           // Met à jour l'indicateur pour éviter d'autres requêtes
           isSwipeEnded = true;
         } else {
