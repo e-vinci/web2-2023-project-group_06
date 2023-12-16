@@ -2,3 +2,11 @@
 
 GET {{baseUrl}}/swipe
 Content-Type: application/json
+
+POST {{baseUrl}}/swipe
+Content-Type: application/json
+
+{
+    "user": 1,
+    "book": 2
+}

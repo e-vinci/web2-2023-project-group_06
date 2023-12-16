@@ -12,9 +12,15 @@ const ProfilPage = () => {
                                 <div class="row">
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
-                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                        <input type="file" accept="image/*" id="profilePictureInput" style="display: none;">
+                                        <label for="profilePictureInput" style="cursor: pointer; width: 100%; height: 100%;">
+                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
                                                 <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
                                             </div>
+                                        </label>
+                                    </div>
+                                    
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">

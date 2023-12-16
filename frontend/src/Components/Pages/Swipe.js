@@ -65,7 +65,6 @@ const Swipe = () => {
       try {
         const response = await fetch(`${process.env.API_BASE_URL}/swipe`);
         const imageData = await response.json();
-  
         // Assurez-vous que imageData contient l'URL de l'image
         if (imageData) {
           swipableImage.src = imageData;
@@ -88,5 +87,4 @@ const Swipe = () => {
       console.log('user not connected ?');
   }
 };
-
 export default Swipe;
