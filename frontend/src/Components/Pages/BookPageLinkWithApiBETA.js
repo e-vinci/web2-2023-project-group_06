@@ -4,7 +4,7 @@ import bookDetails from "./bookDetails";
 /* eslint-disable no-console */
 const ListBooks = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
+    if (user) {
         const main = document.querySelector('main');
      
         const response = await fetch(`${process.env.API_BASE_URL}/books`);

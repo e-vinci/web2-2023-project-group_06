@@ -1,6 +1,6 @@
 const ProfilPage = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
+    if (user) {
         const main = document.querySelector('main');
         const mainfiller = `
         <div class="container py-5">

@@ -21,7 +21,7 @@ const HomePage = () => {
     // l'élément dans localstorage
     const user = JSON.parse(localStorage.getItem('user'));
 
-  if(!user) {
+  if(user) {
     main.innerHTML = `
     <div id="privacyPolicyWrapper"></div>
       <div class="text-center">

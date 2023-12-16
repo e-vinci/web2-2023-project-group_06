@@ -4,7 +4,7 @@ import anime from 'animejs/lib/anime.es.js';
 async function ProfilUser() {
   
   const user = JSON.parse(localStorage.getItem('user'))[0];
-  if (!user) {
+  if (user) {
     console.log(user);
     console.log(user.profile_picture)
 

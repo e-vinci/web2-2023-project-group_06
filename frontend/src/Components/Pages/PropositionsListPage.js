@@ -1,6 +1,6 @@
 const ListBookProposition = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
+    if (user) {
         const main = document.querySelector('main');
         const mainfiller = `
         <h1> Liste des livres proposés par la communauté </h1>

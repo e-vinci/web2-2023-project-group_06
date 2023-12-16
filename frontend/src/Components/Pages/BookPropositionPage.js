@@ -1,6 +1,6 @@
 const BookPropositionPage = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if (!user) {const main = document.querySelector('main');
+  if (user) {const main = document.querySelector('main');
     const mainfiller = `
     <div class="container mt-5">
         <h1>Book suggestion</h1>
