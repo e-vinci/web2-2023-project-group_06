@@ -19,8 +19,6 @@ const AboutUsPage = () => {
             <br>
             Books, on the other hand, are given a score out of ten in 2 categories : fluffiness and darkness.
             <br>
-            The higher a book's sluttiness is, the more this book is popular. For example, Harry Potter would be your perfect 10/10 in that department.
-            <br>
             The fluffiness score measures a book's cuteness. For example if the story ends well, or is pretty positive in general, this score will be higher.
             And on the other hand, if a book scores high in darkness, it means the story might end sadly, or even make you cry... (sorry)
         </p>
