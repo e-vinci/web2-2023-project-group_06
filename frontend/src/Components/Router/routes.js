@@ -5,7 +5,6 @@ import SignUpPage from '../Pages/SignUpPage';
 import AboutUsPage from '../Pages/AboutUs';
 import ProfilPage from '../Pages/ProfilPage';
 import BookPropositionPage from '../Pages/BookPropositionPage';
-import ListBookProposition from '../Pages/ListBookProposition';
 import BookPage from '../Pages/BookPage';
 import MatchList from '../Pages/MatchList';
 import BookPageLinkWithApiBETA from '../Pages/BookPageLinkWithApiBETA';
@@ -22,7 +21,6 @@ const routes = {
   '/about' : AboutUsPage,
   '/profil': ProfilPage,
   '/proposition' : BookPropositionPage,
-  '/listpropositions' : ListBookProposition,
   '/book' : BookPage,
   '/matchList' : MatchList,
   '/books' : BookPageLinkWithApiBETA,
