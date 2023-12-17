@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 
 const jwtSecret = 'ilovebooks!';
 
+const lifetimeJwt = 30; // a changer apres, la c est que 30 sec
+
 const loginUser = require('../models/login');
 
 const router = express.Router();
@@ -28,7 +30,7 @@ router.post('/', async (req, res) => {
     if (userFound && userFound.length !== undefined) {
       const userName = userFound[0].login;
       const hashedPassword = userFound[0].password;
-      const token = jwt.sign({ userName, hashedPassword }, jwtSecret);
+      const token = jwt.sign({ userName, hashedPassword }, jwtSecret, { expiresIn: lifetimeJwt });
       console.log(`Stored hashed password: ${hashedPassword}`);
       console.log(`password value: ${password}`);
 

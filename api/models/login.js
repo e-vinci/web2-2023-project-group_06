@@ -5,7 +5,7 @@
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
 
-const jwtsecret = 'ilovebooks!';
+const jwtSecret = 'ilovebooks!';
 
 // const lifetimeJwt = 24 * 60 * 60 * 1000;
 const lifetimeJwt = 24 * 60 * 60 * 1000;
@@ -30,7 +30,7 @@ const loginUser = (email) => new Promise((resolve, reject) => {
 
       const token = jwt.sign(
         { res },
-        jwtsecret,
+        jwtSecret,
         { expiresIn: lifetimeJwt },
       );
 

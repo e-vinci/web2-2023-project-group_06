@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const SignUpPage = () => {
   const main = document.querySelector('main');
   const mainfillerWithToggle = `

@@ -3,7 +3,7 @@ const pg = require('pg');
 const { Pool } = pg;
 const jwt = require('jsonwebtoken');
 
-const jwtsecret = 'ilovebooks!';
+const jwtSecret = 'ilovebooks!';
 const lifetimeJwt = 24 * 60 * 60 * 1000;
 
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
@@ -25,7 +25,7 @@ const existingUser = (email) => new Promise((resolve, reject) => {
       console.log('just do it');
       const token = jwt.sign(
         { res },
-        jwtsecret,
+        jwtSecret,
         { expiresIn: lifetimeJwt },
       );
 
