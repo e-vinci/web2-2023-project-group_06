@@ -17,6 +17,7 @@ const loginRoute = require('./routes/login');
 const swipeRoute = require('./routes/swipes');
 const profilePageRoute = require('./routes/profilePage');
 const quizzesPageRoute = require('./routes/quizzes');
+const matchRoute = require('./routes/matches');
 const checkTokenRoute = require('./routes/checkToken');
 
 const app = express();
@@ -37,6 +38,7 @@ app.use('/login', loginRoute);
 app.use('/swipe', swipeRoute);
 app.use('/profilePage', profilePageRoute);
 app.use('/quizz', quizzesPageRoute);
+app.use('/match', matchRoute);
 app.use('/checkToken', checkTokenRoute);
 
 module.exports = app;
