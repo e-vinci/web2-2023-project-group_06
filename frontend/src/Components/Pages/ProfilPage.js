@@ -112,8 +112,6 @@ const ProfilPage = () => {
                         user[0].profile_picture = data.imagePath;
                         localStorage.setItem('user', JSON.stringify(user));
                     }
-        
-                    window.location.href = '/profiluser';
                 } catch (error) {
                     console.error('Error uploading profile picture:', error);
                 }
