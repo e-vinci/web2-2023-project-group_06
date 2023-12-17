@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const MatchList = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = JSON.parse(localStorage.getItem('token'));
@@ -19,9 +20,11 @@ const MatchList = async () => {
             console.log('Server Response:', responseToken);
 
             if (!responseToken.ok) {
+                console.error('Token verification failed:', responseToken.statusText);
                 throw new Error(`fetch error : ${responseToken.status} : ${responseToken.statusText}`);
             }
             const result = await responseToken.json();
+            console.log('Token Verification Result:', result);
 
             if (result.isValid) {
                 console.log('user vaut dans le localstorage::::::');

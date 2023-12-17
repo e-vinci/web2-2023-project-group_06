@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const jwtSecret = 'ilovebooks!';
 
-const lifetimeJwt = 30 * 24 * 60 * 60; // a changer apres, la c est que 30 sec
+const lifetimeJwt = 30 * 24 * 60 * 60;
 
 const loginUser = require('../models/login');
 
