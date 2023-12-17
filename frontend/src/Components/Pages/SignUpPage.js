@@ -150,10 +150,11 @@ const SignUpPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        if (errorData.error === 'This email has already been assigned to an account.') {
+        console.log(errorData);
+        if (errorData.error === 'Failed to create user') {
           const errorMessage = document.createElement('div');
           errorMessage.classList.add('alert', 'alert-danger');
-          errorMessage.textContent = errorData.error;
+          errorMessage.textContent = 'This email has already been assigned to an account.';
 
           errorContainer.innerHTML = '';
 
