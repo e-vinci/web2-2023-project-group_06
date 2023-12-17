@@ -14,7 +14,7 @@ const Quizz = async () => {
       // rajout pour token
       try {
           console.log('BEFORE FETCH');
-          const responseToken = await fetch(`${process.env.API_BASE_URL}/checkToken`, {
+          const response = await fetch(`${process.env.API_BASE_URL}/checkToken`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -23,12 +23,12 @@ const Quizz = async () => {
           });
           console.log(`AFTER FETCH + token : ${token}`);
 
-          console.log('Server Response:', responseToken);
+          console.log('Server Response:', response);
 
-          if (!responseToken.ok) {
-            throw new Error(`fetch error : ${responseToken.status} : ${responseToken.statusText}`);
+          if (!response.ok) {
+            throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
           }
-          const result = await responseToken.json();
+          const result = await response.json();
 
           if (result.isValid) {
               const main = document.querySelector('main');
@@ -86,7 +86,7 @@ const Quizz = async () => {
                             
                             <label>Question 10 : Which type of wine do you prefer ?</label><br>
                             <input type="radio" value="plus" name="ten">Red <br>
-                            <input type="radio" value="minus" name="ten">Rosé<br>
+                            <input type="radio" value="minus" name="ten">RosÃ©<br>
                             <input type="radio" value="minus" name="ten">White<br>
                             <input type="radio" value="plus" name="ten">I don't drink wine <br><br>
             
@@ -174,9 +174,15 @@ const Quizz = async () => {
                       },
                       body: JSON.stringify({ user_type, user_id, user_score }),
                   };
-
+                  if (user_score !== null && user_score !== undefined && user_score !== '') {
+                    user[0].quizz_score = user_score;
+                }
+                if (user_type !== null && user_type !== undefined && user_type !== '') {
+                    user[0].category = user_type;
+                }
+                localStorage.setItem('user', JSON.stringify(user));
+                console.log(user);
                   await fetch(`${process.env.API_BASE_URL}/quizz`, options);
-
                   window.location.href = '/profiluser';
                   } catch (error) {
                   console.error('Error processing the quizz result:', error);
