@@ -41,7 +41,13 @@ const HomePage = () => {
             <br>
           </div> 
         </footer>
-      </div>`
+      </div>`;
+
+      const aboutButton = document.querySelector('[data-uri="/about"]');
+      aboutButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        handleNavigation('/about');
+      });
   } else {
   main.innerHTML = `
   <div id="privacyPolicyWrapper"></div>
@@ -96,34 +102,7 @@ const HomePage = () => {
   });
 }
 
-
   PrivacyPolicy();
-
-  
-
-  anime({
-    // targets: '#logoo',
-    translateX: [
-      { value: -200, duration: 1200 },
-      { value: 200, duration: 1200 },
-      { value: 0, duration: 1200 }
-    ],
-    scaleX: [
-      { value: 1.1, duration: 200, easing: 'easeOutExpo' },
-      { value: 1, duration: 200 },
-      { value: 1.1, duration: 200 },
-      { value: 1, duration: 200 }
-    ],
-    scaleY: [
-      { value: 1.1, duration: 200, easing: 'easeOutExpo' },
-      { value: 1, duration: 200 },
-      { value: 1.1, duration: 200 },
-      { value: 1, duration: 200 }
-    ],
-    easing: 'easeOutElastic(1, .8)',
-    loop: true
-  });
-
 
   const logoo = document.querySelector('#logoo');
   logoo.addEventListener('click', () => {
@@ -131,7 +110,8 @@ const HomePage = () => {
       targets: logoo,
       rotate: '20turn',
       duration: 800,
-      easing: 'easeInOutSine'
+      easing: 'easeInOutSine',
+      loop : true,
     });
   });
 
