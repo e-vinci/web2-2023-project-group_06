@@ -35,9 +35,13 @@ const LogInPage = () => {
       if (!response.ok) {
         const errorMessage = document.createElement('div');
         errorMessage.classList.add('alert', 'alert-danger');
-        errorMessage.textContent = `incorrect username or password: Please check your username or password`;
+        errorMessage.textContent = `Incorrect email or password : Please check your email or password`;
         form = document.getElementById('loginForm');
         form.appendChild(errorMessage);
+        setTimeout(() => {
+          errorMessage.textContent = '';
+          errorMessage.classList.remove('alert', 'alert-danger');
+        }, 5000);
         throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
       }
       
