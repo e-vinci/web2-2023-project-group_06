@@ -17,9 +17,9 @@ const ProfilPage = () => {
                                         <input type="file" accept="image/*" id="profilePictureInput" style="display: none;">
                                         <input type="file" accept="image/*" id="profilePictureInput" style="display: none;">
                                         <label for="profilePictureInput" style="cursor: pointer; width: 100%; height: 100%;">
-                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; color: black;">
                                                 Cliquez ici pour changer la photo
-                                            </div>
+                                            </div>                                      
                                         </label>
                                     </div>
                                     
@@ -33,7 +33,7 @@ const ProfilPage = () => {
                                     </div>
                                 </div>
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                    <li class="nav-item">Settings</li>
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">

@@ -90,6 +90,7 @@ if(user){
     event.preventDefault();
      console.log('déconnexion');
      localStorage.removeItem('user');
+     localStorage.removeItem('token');
      window.location.href = '/';
      Navbar();
    });

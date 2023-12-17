@@ -18,7 +18,7 @@ const pool = new Pool({
 async function saveProfilePicture(id, imagePath) {
   try {
     // Créez la requête SQL pour mettre à jour le chemin de l'image de l'utilisateur
-    const sql = 'UPDATE users SET profile_picture = $1 WHERE id = $2';
+    const sql = 'UPDATE project.users SET profile_picture = $1 WHERE id_user = $2';
 
     // Exécutez la requête SQL
     const result = await pool.query(sql, [imagePath, id]);
