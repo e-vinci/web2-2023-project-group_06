@@ -19,7 +19,7 @@ const LogInPage = () => {
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const form = document.getElementById('loginForm');
+    let form = document.getElementById('loginForm');
 
     try {
      const response = await fetch(`${process.env.API_BASE_URL}/login`, {
@@ -33,10 +33,15 @@ const LogInPage = () => {
       console.log('Server Response:', response);
 
       if (!response.ok) {
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('alert', 'alert-danger');
+        errorMessage.textContent = `incorrect username or password: Please check your username or password`;
+        form = document.getElementById('loginForm');
+        form.appendChild(errorMessage);
         throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
       }
-
-      const { token, userFound, hashedPassword, error, field } = await response.json();
+      
+      const { token, userFound, hashedPassword } = await response.json();
 
       if (userFound && userFound.length > 0) {
         console.log('Login successful:', userFound);
@@ -56,19 +61,12 @@ const LogInPage = () => {
         // Redirect to the home page
         console.log('REDIRECT TO / HOMEPAGE ?');
         window.location.href = '/';
-      } else {
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('alert', 'alert-danger', 'mt-3');
-        errorMessage.textContent = error === 'Invalid credentials' && field === 'password'
-        ? 'Not the correct password'
-        : 'Bad email';
-        form.appendChild(errorMessage);
       }
     } catch (error) {
       console.log('Server error message:', error.message);
       console.log('Client-side error:', error);
     }
-  };
+  }
 
   const mainFiller = `
     <header class="text-center"><div id="navbarWrapper"></div>
