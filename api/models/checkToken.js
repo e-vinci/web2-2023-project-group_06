@@ -14,11 +14,16 @@ function checkTokenValidity(token) {
     console.log('Decoded Payload:', decoded);
     console.log('models decoded.exp : ', decoded.exp);
 
+    if (decoded.exp === null) {
+      console.log('Token does not have an expiration time.');
+      return true;
+    }
+
     const currentTimeInSeconds = Math.floor(Date.now() / 1000);
     console.log(`models currentTimeInSeconds : ${currentTimeInSeconds}`);
     console.log('models end');
 
-    return decoded.exp && currentTimeInSeconds < decoded.exp;
+    return currentTimeInSeconds < decoded.exp;
   } catch (error) {
     return false; // Token is invalid or expired
   }

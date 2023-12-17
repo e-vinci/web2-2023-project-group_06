@@ -44,9 +44,6 @@ if(user){
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               ${user ? ` 
                 <li class ="nav-item">
-                  <a class="nav-link" href="#" data-uri="/listpropositions">List of the book suggestions</a>
-                </li>
-                <li class ="nav-item">
                   <a class="nav-link" href="#" data-uri="/quizz"> Quizz (temporaire)</a>
                 </li>
                 <li class ="nav-item">
