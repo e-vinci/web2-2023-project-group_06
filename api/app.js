@@ -18,6 +18,7 @@ const swipeRoute = require('./routes/swipes');
 const profilePageRoute = require('./routes/profilePage');
 const quizzesPageRoute = require('./routes/quizzes');
 const uploadProfilePicture = require('./routes/uploadProfilePicture');
+const matchRoute = require('./routes/matches');
 
 const app = express();
 
@@ -40,5 +41,6 @@ app.use('/swipe', swipeRoute);
 app.use('/profilePage', profilePageRoute);
 app.use('/quizz', quizzesPageRoute);
 app.use('/uploadProfilePicture', uploadProfilePicture);
+app.use('/match', matchRoute);
 
 module.exports = app;

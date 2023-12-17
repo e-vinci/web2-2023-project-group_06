@@ -1,36 +1,47 @@
-const MatchList = () => {
+const MatchList = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-        
+        console.log('user vaut dans le localstorage::::::');
+        console.log(user[0].id_user);
+
+
+        const response = await fetch(`${process.env.API_BASE_URL}/match/${user[0].id_user}`);
+
+        if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+        const match = await response.json();
+        console.log('match vaut :::::');
+        console.log(match);
+
+
+        const rows = match.map(m => `
+        <tr>
+            <td>${m.title}</td>
+            <td>${m.nb_pages}</td>
+            <td>${m.author}</td>
+            <td>${m.description}</td>
+        </tr>
+        `).join('');
+
         const main = document.querySelector('main');
         const mainfiller = `
-        <h1> Liste des livres proposés par la communauté </h1>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Photo</th>
-                    <th>Title</th>
-                    <th>Likes</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>photo</td>
-                    <td>Title</td>
-                    <td>liked this person</td>
-                    <td><a href="/book" class="btn btn-primary">Voir détails</a></td>
-                </tr>
-                <tr>
-                    <td>photo</td>
-                    <td>Title</td>
-                    <td>liked this person</td>
-                    <td><a href="/book" class="btn btn-primary">Voir détails</a></td>
-                </tr>
-            </tbody>
-        </table>
+            <h1> Liste des livres proposés par la communauté </h1>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>nb_pages</th>
+                        <th>author</th>
+                        <th>description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${rows}
+                </tbody>
+            </table>
         `;
         main.innerHTML = mainfiller;
+
+        
     } else {
         const main = document.querySelector('main');
         main.innerHTML = `
