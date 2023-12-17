@@ -164,10 +164,12 @@ const Quizz = async () => {
                   event.preventDefault();
                   const selectedOptions = document.querySelectorAll('input[type="radio"]:checked');
                   const choices = Array.from(selectedOptions).map(option => option.value);
-                  const user_type = countAndCompare(choices);
+                  const user_type = countAndCompare(choices)[0];
                   const user_id = user[0].id_user;
+                  const user_score = countAndCompare(choices)[1];
 
                   console.log('User Type:', user_type);
+                  console.log('User score : ', user_score);
 
                   try {
                   const options = {
@@ -175,7 +177,7 @@ const Quizz = async () => {
                       headers: {
                       'Content-Type': 'application/json',
                       },
-                      body: JSON.stringify({ user_type, user_id }),
+                      body: JSON.stringify({ user_type, user_id, user_score }),
                   };
 
                   await fetch(`${process.env.API_BASE_URL}/quizz`, options);
@@ -224,6 +226,7 @@ function countAndCompare(choices) {
   let countPlus = 0;
   let countMinus = 0;
   let userType = "";
+  let score = 0;
 
   for (const choice of choices) {
     if (choice === 'plus') {
@@ -236,12 +239,15 @@ function countAndCompare(choices) {
   // Determine the user type based on the counts
   if (countPlus > countMinus) {
     userType = "fluffy";
+    score = Math.floor(countPlus) / 2;
   } else {
     userType = "dark";
+    score = Math.floor(countMinus) / 2;
   }
 
   console.log(userType);
-  return userType;
+  const retour = [userType, score];
+  return retour;
 }
 
 export default Quizz;

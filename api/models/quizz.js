@@ -14,9 +14,9 @@ const pool = new Pool({
   port: '5432',
 });
 
-const setUserType = async (type, id) => {
+const setUserType = async (type, score, id) => {
   try {
-    const res = await pool.query('UPDATE project.users SET category = $1 WHERE id_user = $2;', [type, id]);
+    const res = await pool.query('UPDATE project.users SET category = $1, quizz_score = $2 WHERE id_user = $3;', [type, score, id]);
     return res;
   } catch (err) {
     console.log(err.message);
