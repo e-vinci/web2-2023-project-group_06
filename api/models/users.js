@@ -1,101 +1,72 @@
+const pg = require('pg');
+
+const { Pool } = pg;
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const path = require('node:path');
-const { parse, serialize } = require('../utils/json');
 
-const jwtSecret = 'ilovemypizza!';
-const lifetimeJwt = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
+const jwtSecret = 'ilovebooks!';
+const lifetimeJwt = 24 * 60 * 60 * 1000;
 
-const saltRounds = 10;
+const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';
 
-const jsonDbPath = path.join(__dirname, '/../data/users.json');
+const pool = new Pool({
+  user: 'brhhbrnw',
+  host: 'flora.db.elephantsql.com',
+  database: 'brhhbrnw',
+  password: pw,
+  port: '5432',
+});
 
-const defaultUsers = [
-  {
-    id: 1,
-    username: 'admin',
-    password: bcrypt.hashSync('admin', saltRounds),
-  },
-];
+const existingUser = (email) => new Promise((resolve, reject) => {
+  pool.query('SELECT * FROM project.users WHERE login = $1', [email], (err, res) => {
+    if (err) {
+      console.error(err.message);
+      reject(err);
+    } else {
+      console.log('just do it');
+      const token = jwt.sign(
+        { res },
+        jwtSecret,
+        { expiresIn: lifetimeJwt },
+      );
 
-async function login(username, password) {
-  const userFound = readOneUserFromUsername(username);
-  if (!userFound) return undefined;
+      const authenticatedUser = {
+        res,
+        token,
+      };
 
-  const passwordMatch = await bcrypt.compare(password, userFound.password);
-  if (!passwordMatch) return undefined;
+      resolve(authenticatedUser.res.rows);
+    }
+  });
+});
 
-  const token = jwt.sign(
-    { username }, // session data added to the payload (payload : part 2 of a JWT)
-    jwtSecret, // secret used for the signature (signature part 3 of a JWT)
-    { expiresIn: lifetimeJwt }, // lifetime of the JWT (added to the JWT payload)
-  );
+const createUser = async (login, password, name, surname) => {
+  try {
+    const userExists = await existingUser(login);
+    if (userExists.length > 0) {
+      throw new Error('Cet email est déjà assigné à un compte.');
+    }
 
-  const authenticatedUser = {
-    username,
-    token,
-  };
+    const query = `
+      INSERT INTO project.users (
+        name,
+        surname,
+        profile_description,
+        password,
+        login,
+        category,
+        quizz_score,
+        profile_picture
+      )
+      VALUES ($3, $4, '', $1, $2, NULL, 0, '') RETURNING password, login,name, surname
+    `;
+    const values = [password, login, name, surname];
 
-  return authenticatedUser;
-}
-
-async function register(username, password) {
-  const userFound = readOneUserFromUsername(username);
-  if (userFound) return undefined;
-
-  await createOneUser(username, password);
-
-  const token = jwt.sign(
-    { username }, // session data added to the payload (payload : part 2 of a JWT)
-    jwtSecret, // secret used for the signature (signature part 3 of a JWT)
-    { expiresIn: lifetimeJwt }, // lifetime of the JWT (added to the JWT payload)
-  );
-
-  const authenticatedUser = {
-    username,
-    token,
-  };
-
-  return authenticatedUser;
-}
-
-function readOneUserFromUsername(username) {
-  const users = parse(jsonDbPath, defaultUsers);
-  const indexOfUserFound = users.findIndex((user) => user.username === username);
-  if (indexOfUserFound < 0) return undefined;
-
-  return users[indexOfUserFound];
-}
-
-async function createOneUser(username, password) {
-  const users = parse(jsonDbPath, defaultUsers);
-
-  const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-  const createdUser = {
-    id: getNextId(),
-    username,
-    password: hashedPassword,
-  };
-
-  users.push(createdUser);
-
-  serialize(jsonDbPath, users);
-
-  return createdUser;
-}
-
-function getNextId() {
-  const users = parse(jsonDbPath, defaultUsers);
-  const lastItemIndex = users?.length !== 0 ? users.length - 1 : undefined;
-  if (lastItemIndex === undefined) return 1;
-  const lastId = users[lastItemIndex]?.id;
-  const nextId = lastId + 1;
-  return nextId;
-}
-
-module.exports = {
-  login,
-  register,
-  readOneUserFromUsername,
+    const result = await pool.query(query, values);
+    return result.rows[0];
+  } catch (err) {
+    console.error('Error creating user:', err);
+    throw err;
+  }
 };
+
+module.exports = { createUser, existingUser };

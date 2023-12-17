@@ -1,18 +1,23 @@
+/* eslint-disable no-console */
 const jwt = require('jsonwebtoken');
-const { readOneUserFromUsername } = require('../models/users');
+// const { readOneUserFromUsername } = require('../models/users');
+const { login } = require('../models/login');
 
-const jwtSecret = 'ilovemypizza!';
+const jwtSecret = 'ilovebooks!';
 
 const authorize = (req, res, next) => {
   const token = req.get('authorization');
-  if (!token) return res.sendStatus(401);
+  if (!token) {
+    console.log(`pas de token ? ${token}`);
+    return res.sendStatus(401);
+  }
 
   try {
     const decoded = jwt.verify(token, jwtSecret);
     console.log('decoded', decoded);
     const { username } = decoded;
 
-    const existingUser = readOneUserFromUsername(username);
+    const existingUser = login(username);
 
     if (!existingUser) return res.sendStatus(401);
 
