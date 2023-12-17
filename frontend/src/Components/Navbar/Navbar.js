@@ -43,12 +43,6 @@ if(user){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               ${user ? ` 
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-uri="/profil">Profile</a>
-                </li>
-                <li class ="nav-item">
-                  <a class="nav-link" href="#" data-uri="/proposition">Suggest a book</a>
-                </li>
                 <li class ="nav-item">
                   <a class="nav-link" href="#" data-uri="/listpropositions">List of the book suggestions</a>
                 </li>
@@ -96,6 +90,7 @@ if(user){
     event.preventDefault();
      console.log('déconnexion');
      localStorage.removeItem('user');
+     localStorage.removeItem('token');
      window.location.href = '/';
      Navbar();
    });

@@ -33,7 +33,7 @@ async function ProfilUser() {
         </div>
       </div>
       <div class="card-footer text-right">
-        <a href="#" class="btn btn-light myButton" data-uri="/profil">Modifier Profil</a>
+        <a href="/profil" class="btn btn-light myButton">Modifier Profil</a>
       </div>
     </div>
   </div>
@@ -42,12 +42,12 @@ async function ProfilUser() {
 
     anime({
       targets: '.card',
-      scale: [1, 1.05],
-      rotate: '50turn',
-      direction: 'normal',
-      easing: 'linear',
-      duration: 2000
+      translateX: 100, // déplace l'élément de 250px sur l'axe X
+      duration: 500, // durée de l'animation en millisecondes
+      easing: 'easeInOutQuad', // fonction d'assouplissement pour une transition en douceur
+      direction: 'alternate', // l'animation revient à son état initial
     });
+    
 
   } else {
       const main = document.querySelector('main');

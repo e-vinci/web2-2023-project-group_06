@@ -15,10 +15,11 @@ const ProfilPage = () => {
                                         <div class="mx-auto" style="width: 140px;">
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
                                         <input type="file" accept="image/*" id="profilePictureInput" style="display: none;">
+                                        <input type="file" accept="image/*" id="profilePictureInput" style="display: none;">
                                         <label for="profilePictureInput" style="cursor: pointer; width: 100%; height: 100%;">
-                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
-                                                <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
-                                            </div>
+                                            <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; color: black;">
+                                                Cliquez ici pour changer la photo
+                                            </div>                                      
                                         </label>
                                     </div>
                                     
@@ -27,13 +28,12 @@ const ProfilPage = () => {
                                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                         <div class="text-center text-sm-left mb-2 mb-sm-0">
                                             <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">${user[0].name} ${user[0].surname}</h4>
-                                            <p class="mb-0">@johndoe</p>
-                                            <div class="text-muted"><small>Dernière connexion il y a 2 heures</small></div>
+                                            <p class="mb-0">@${user[0].name}${user[0].surname}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                    <li class="nav-item">Settings</li>
                                 </ul>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
@@ -84,13 +84,48 @@ const ProfilPage = () => {
 
         const form = document.querySelector('form');
 
+        const profilePictureInput = document.getElementById('profilePictureInput');
+
+        profilePictureInput.addEventListener('change', async (event) => {
+            event.preventDefault();
+            if (event.target.files && event.target.files[0]) {
+                const formData = new FormData();
+                formData.append('profilePicture', event.target.files[0]);
+                formData.append('id', user[0].id_user);
+                
+                console.log('VOUS ETES ICI ::');
+                console.log(formData);
+        
+                try {
+                    const options = {
+                        method: 'POST',
+                        body: formData,
+                    };
+                    // Récupérez la réponse du serveur
+                    const response = await fetch(`${process.env.API_BASE_URL}/uploadProfilePicture`, options);
+                    // Convertissez la réponse en JSON
+                    const data = await response.json();
+        
+                    // Vérifiez si l'upload a réussi
+                    if (data.success) {
+                        // Mettez à jour l'objet utilisateur avec le nouveau chemin de l'image
+                        user[0].profile_picture = data.imagePath;
+                        localStorage.setItem('user', JSON.stringify(user));
+                    }
+                } catch (error) {
+                    console.error('Error uploading profile picture:', error);
+                }
+            }
+        });
+
+
         const profileModification = async (event) => {
             event.preventDefault();
             const userName = document.getElementsByName('name')[0].value;
             const surname = document.getElementsByName('surname')[0].value;
             const profileDescription = document.getElementById('description').value;
+            
             const id = user[0].id_user;
-
             try {
                 const options = {
                     method: 'POST',

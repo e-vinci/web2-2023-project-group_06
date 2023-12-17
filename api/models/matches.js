@@ -15,12 +15,8 @@ const pool = new Pool({
 });
 
 const readMatches = async (id) => {
-  console.log(id);
-  const query = `
-    SELECT bo.* FROM project.books bo, project.matches ma WHERE ma.user = $1 AND ma.book = bo.id_book`;
-  const values = [id];
   try {
-    const res = await pool.query(query, values);
+    const res = await pool.query('SELECT bo.* FROM project.books bo, project.matches ma WHERE ma.user = $1 AND ma.book = bo.id_book', [id]);
     console.log('Résultat de la requête :', res.rows);
     return res.rows;
   } catch (err) {
