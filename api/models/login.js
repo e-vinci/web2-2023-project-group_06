@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken');
 
 const jwtSecret = 'ilovebooks!';
 
-// const lifetimeJwt = 24 * 60 * 60 * 1000;
 const lifetimeJwt = 24 * 60 * 60 * 1000;
 
 const pw = 'UTTWcbB6Bfa6Dw7OkgwTcQALfR9RKGFF';

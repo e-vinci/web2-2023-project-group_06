@@ -5,7 +5,7 @@ const logger = require('morgan');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: ['http://localhost:8070', 'https://e-baron.github.io'],
+  origin: ['http://localhost:8070', 'https://e-baron.github.io', 'https://chuqi-zhang-vinci.github.io'],
 };
 
 const usersRouter = require('./routes/users');
