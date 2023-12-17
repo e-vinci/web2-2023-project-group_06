@@ -23,9 +23,9 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { user, book } = req.body;
+  const { userID, book } = req.body;
   try {
-    const matchBook = await match(user, book);
+    const matchBook = await match(userID, book);
     console.log('vous êtes ici : ');
     return res.json(matchBook);
   } catch (err) {

@@ -3,21 +3,27 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import logoImage from '../../img/boonder_advanced_logo.png';
+import heartImage from '../../img/heart_img.png';
 
 const Swipe = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   if (user) {
       const main = document.querySelector('main');
-  const mainfiller = `
-    <h1> Liste des livres proposés par la communauté </h1>
-    <div id="swipeContainer" class="container mt-5 text-center">
-      <img src="${logoImage}" alt="logo" class="image-fluid w-25 mx-auto" style="position: relative" id="swipableImage" draggable="false"> 
-    </div>
-    <button id="leftButton" disabled>Activer à gauche</button>
-    <button id="rightButton" disabled>Activer à droite</button>
-  `;
-
-  main.innerHTML = mainfiller;
+      const mainfiller = `
+      <h1> Liste des livres proposés par la communauté </h1>
+      <div id="swipeContainer" class="container mt-5 text-center">
+        <img src="${logoImage}" alt="logo" class="image-fluid w-25 mx-auto" style="position: relative" id="swipableImage" draggable="false"> 
+        <div id="matchContainer" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: hidden;">
+          <img src="${heartImage}" alt="heart" style="width: 300px; height: 300px;">
+          <p style="color: white; font-size: 48px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0;">Match</p>
+        </div>
+      </div>
+      <button id="leftButton" disabled>Activer à gauche</button>
+      <button id="rightButton" disabled>Activer à droite</button>
+    `;
+    
+    main.innerHTML = mainfiller;
+    
 
   const swipeContainer = document.getElementById('swipeContainer');
   const swipableImage = document.getElementById('swipableImage');
@@ -67,73 +73,80 @@ const Swipe = () => {
         const imageData = await response.json();
         // imageData contient l'URL de l'image
         if (imageData) {
-          swipableImage.src = imageData.photo;
+          if (currentX < -50) {
+            if (user[0].category === 'fluffy') {
+                const fluffy = imageData.scoreFluffiness;
+                console.log(fluffy);
+                if (fluffy <= user[0].quizz_score) {
+                    // Code du match pour la catégorie 'fluffy'
+                    const userID = user[0].id_user;
+                    const book = imageData.id_book;
+                    document.getElementById('matchContainer').style.visibility = 'visible';
+                    setTimeout(() => {
+                        document.getElementById('matchContainer').style.visibility = 'hidden';
+                    }, 1000);
+                    try {
+                        const options = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ userID, book }),
+                        };
+                        console.log(options);
+                        await fetch(`${process.env.API_BASE_URL}/swipe`, options);
+                    } catch (error) {
+                        console.error('Error modifying user:', error);
+                        // Handle error here
+                    }
+                }
+            } else if (user[0].category === 'dark') {
+                const dark = imageData.scoreDarkness;
+                console.log(dark);
+                if (dark <= user[0].quizz_score) {
+                    // Code du match pour la catégorie 'dark'
+                    const userID = user[0].id_user;
+                    const book = imageData.id_book;
+                    document.getElementById('matchContainer').style.visibility = 'visible';
+                    setTimeout(() => {
+                        document.getElementById('matchContainer').style.visibility = 'hidden';
+                    }, 500);
+        
+                    try {
+                        const options = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ userID, book }),
+                        };
+        
+                        console.log(options.body);
+                        await fetch(`${process.env.API_BASE_URL}/swipe`, options);
+        
+                        if (!response.ok) {
+                            console.error('Error modifying user. Status:', response.status);
+                        }
+                    } catch (error) {
+                        console.error('Error modifying user:', error);
+                    }
+                }
+            }
+        } 
+        swipableImage.src = imageData.photo;
           console.log('Image????????', imageData);
           console.log(currentX);
           console.log(user[0].category);
           console.log(imageData.scoreFluffiness);
-         if(currentX < -50){
-            if(user[0].category === 'fluffy'){
-            const fluffy  = imageData.scoreFluffiness;
-              if(fluffy < user[0].quizz_score){
-                const userID = user[0].id_user;
-                const book = imageData.id_book;
-                try {
-                const options = {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ userID, book}),
-                };
-                console.log(options);
-                await fetch(`${process.env.API_BASE_URL}/swipe`, options);
-                
-                } catch (error) {
-                    console.error('Error modifying user:', error);
-                    // Handle error here 
-                } 
-              }else{
-                return;
-              }
-            }else{
-              const dark  = imageData.scoreDarkness;
-              if(dark < user[0].quizz_score){
-                const userID = user[0].id_user;
-                const book = imageData.id_book;
-                try {
-                const options = {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ userID, book}),
-                };
-                
-                console.log(options.body);
-                await fetch(`${process.env.API_BASE_URL}/swipe`, options);
-
-                if (!response.ok) {
-                  // Si la réponse n'est pas réussie (code HTTP différent de 200)
-                  console.error('Error modifying user. Status:', response.status);
-                  // Handle error here
-              }
-                
-                } catch (error) {
-                    console.error('Error modifying user:', error);
-                    // Handle error here 
-                } 
-              }else{
-                return;
-              }
-          } 
-        }
+         
           // Met à jour l'indicateur pour éviter d'autres requêtes
 
           isSwipeEnded = true;
         } else {
           console.error('Invalid image data received:', imageData);
         }
+        
+
       } catch (error) {
         console.error('Error fetching image:', error);
       }

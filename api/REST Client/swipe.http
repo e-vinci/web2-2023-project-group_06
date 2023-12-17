@@ -9,6 +9,6 @@ POST {{baseUrl}}/swipe
 Content-Type: application/json
 
 {
-    "user": 2,
+    "userID": 2,
     "book": 15
 }
