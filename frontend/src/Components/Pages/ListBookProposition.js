@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const ListBookProposition = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {

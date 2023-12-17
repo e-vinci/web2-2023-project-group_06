@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/extensions
 import anime from 'animejs/lib/anime.es.js'; 
 

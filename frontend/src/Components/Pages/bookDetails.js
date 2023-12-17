@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 async function bookDetails(id){
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {

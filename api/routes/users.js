@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { createUser } = require('../models/users');
 
-const jwtSecret = 'jwtSecret!';
+const jwtSecret = 'ilovebooks!';
 
 const router = express.Router();
 

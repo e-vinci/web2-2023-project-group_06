@@ -22,7 +22,7 @@ const LogInPage = () => {
     const form = document.getElementById('loginForm');
 
     try {
-        const response = await fetch(`${process.env.API_BASE_URL}/login`, {
+     const response = await fetch(`${process.env.API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,6 +46,12 @@ const LogInPage = () => {
         // AJOUTER DANS LOCALSTORAGE (chuqi)
         localStorage.setItem('user', JSON.stringify(userFound));
         localStorage.setItem('token', JSON.stringify(token));
+
+        const users = JSON.parse(localStorage.getItem('user'));
+        const tokens = JSON.parse(localStorage.getItem('token'));
+        console.log('LogInPage user : ', users);
+        console.log('LogInPage token : ', tokens);
+ 
 
         // Redirect to the home page
         console.log('REDIRECT TO / HOMEPAGE ?');

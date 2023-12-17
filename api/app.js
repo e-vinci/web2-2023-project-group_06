@@ -19,6 +19,7 @@ const profilePageRoute = require('./routes/profilePage');
 const quizzesPageRoute = require('./routes/quizzes');
 const uploadProfilePicture = require('./routes/uploadProfilePicture');
 const matchRoute = require('./routes/matches');
+const checkTokenRoute = require('./routes/checkToken');
 
 const app = express();
 
@@ -42,5 +43,6 @@ app.use('/profilePage', profilePageRoute);
 app.use('/quizz', quizzesPageRoute);
 app.use('/uploadProfilePicture', uploadProfilePicture);
 app.use('/match', matchRoute);
+app.use('/checkToken', checkTokenRoute);
 
 module.exports = app;
