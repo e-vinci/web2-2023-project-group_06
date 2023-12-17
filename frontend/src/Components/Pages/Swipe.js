@@ -71,6 +71,7 @@ const Swipe = () => {
       try {
         const response = await fetch(`${process.env.API_BASE_URL}/swipe`);
         const imageData = await response.json();
+        swipableImage.src = imageData.photo;
         // imageData contient l'URL de l'image
         if (imageData) {
           if (currentX < -50) {
@@ -133,7 +134,8 @@ const Swipe = () => {
                 }
             }
         } 
-        swipableImage.src = imageData.photo;
+
+        
           console.log('Image????????', imageData);
           console.log(currentX);
           console.log(user[0].category);

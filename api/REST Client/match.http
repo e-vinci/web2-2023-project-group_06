@@ -1,0 +1,9 @@
+@baseUrl = http://localhost:3000
+
+### allMatches
+GET {{baseUrl}}/match
+Content-Type: application/json
+
+{
+    "id": 66
+}
