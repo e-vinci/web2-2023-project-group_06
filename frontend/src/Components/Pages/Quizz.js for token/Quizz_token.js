@@ -179,7 +179,10 @@ const Quizz = async () => {
                     };
 
                     await fetch(`${process.env.API_BASE_URL}/quizz`, options);
+                    const updatedUser = await response.json();
 
+                    localStorage.removeItem('user');
+                    localStorage.setItem('user', JSON.stringify(updatedUser));
                     window.location.href = '/profiluser';
                     } catch (error) {
                     console.error('Error processing the quizz result:', error);

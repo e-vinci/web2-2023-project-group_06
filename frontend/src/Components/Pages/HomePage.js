@@ -41,7 +41,13 @@ const HomePage = () => {
             <br>
           </div> 
         </footer>
-      </div>`
+      </div>`;
+
+      const aboutButton = document.querySelector('[data-uri="/about"]');
+      aboutButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        handleNavigation('/about');
+      });
   } else {
   main.innerHTML = `
   <div id="privacyPolicyWrapper"></div>
