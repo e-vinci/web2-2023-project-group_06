@@ -5,7 +5,7 @@ const path = require('path');
 const { saveProfilePicture } = require('../models/uploadProfilePicture');
 
 const router = express.Router();
-const prefixe = 'http://localhost:3000/';
+const prefixe = 'https://boonder.azurewebsites.net/';
 // Configurez Multer pour stocker les fichiers dans le dossier public/images
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
